@@ -3,9 +3,6 @@
     declare(strict_types= 1);
     require_once("../includes/session.inc.php");
     
-    $envFilePath ='../.env';
-    loadEnv($envFilePath);
-    
     if($_SERVER["REQUEST_METHOD"]==="POST")
     {
         $pwd = $_POST["pwd"];
@@ -55,26 +52,14 @@
         header("Location:login.php");
         die();
     }
-    function loadEnv($filePath)
-    {
-        if (file_exists($filePath)) {
-            $lines = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-
-            foreach ($lines as $line) {
-                list($name, $value) = explode('=', $line, 2);
-                $_ENV[$name] = $value;
-                putenv("$name=$value");
-            }
-        }
-    }
     function checkInput(string $pwd, string $username)
     {
         return empty($pwd) || empty($username);
     }
     function username_exists(string $username,string $pwd)
     {
-        $superuserUsername = getenv('SUPERUSER_USERNAME');
-        $superuserPassword = getenv('SUPERUSER_PASSWORD');
+        $superuserUsername = "superuser";
+        $superuserPassword = "6IcRHIEh6sf0iChf8B758g==";
     
         return $username === $superuserUsername && $pwd === $superuserPassword ;
     }

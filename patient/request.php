@@ -1,5 +1,6 @@
 <?php
-
+    
+    ob_start();
     declare(strict_types= 1);
     require_once("../includes/session.inc.php");
     require_once("../includes/dbh.inc.php");

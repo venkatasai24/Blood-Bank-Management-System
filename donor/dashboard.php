@@ -166,7 +166,7 @@ require_once("../includes/template.php");
 
             $cnt=0;
 
-            echo '<div class="container mt-5">
+            echo '<div class="container mt-5 mb-5">
                     <h2 class="text-center mb-4">Donation History</h2>
                     <div class="row align-items-center">';
 

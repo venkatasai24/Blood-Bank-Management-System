@@ -21,7 +21,8 @@
         }
     }
     #animated-image {
-    margin-top: 50px;
+    margin-top: 40px;
+    margin-bottom: 100px;
     animation: scaleAnimation 0.4s infinite alternate; /* Animation duration and behavior */
     transform-origin: center; /* Sets the scaling center to the image center */
     }
@@ -57,7 +58,7 @@
         </div>
     </nav>
 
-    <div class='container text-center' style="color: #ff0000; padding-top: 100px;">
+    <div class='container text-center' style="color: #ff0000; padding-top: 50px;">
         <h1 class="display-6">Blood Bank Management System</h1>
         <p class="lead mt-3">
             This system is designed to efficiently manage blood donations, donors, and recipients, ensuring the availability of safe and life-saving blood for those in need.

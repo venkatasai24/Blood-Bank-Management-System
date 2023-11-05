@@ -1,9 +1,9 @@
 <?php
 
         $host="localhost";
-        $dbname= "BBMS";
-        $dbusername= "root";
-        $dbpassword= '';
+        $dbname= "XXXXXXXXXXXX";
+        $dbusername= "XXXXXXXXXXX";
+        $dbpassword= 'XXXXXXXXXXX';
 
         try {
             $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbusername, $dbpassword);

@@ -1,5 +1,6 @@
 <?php
 
+    ob_start();
     require_once("../includes/session.inc.php");
     require_once("../includes/template.php");
     function check_errors()

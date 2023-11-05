@@ -170,7 +170,7 @@
             blood_group($row["ON"],"ON");
             echo '</div>
             <div class="row">
-                <div class="col-md-4 offset-md-4 mt-5">
+                <div class="col-md-4 offset-md-4 mt-5 mb-5">
                             <div class="form-container">
                             <h2 class="text-center">Update Blood</h2>
                             <form action="update.php" method="post">
@@ -239,7 +239,7 @@
             $cnt=0;
 
             // Table header
-            echo '<div class="container mt-5">'; // Add Bootstrap container
+            echo '<div class="container mt-5 mb-5">'; // Add Bootstrap container
             echo '<div class="row align-items-center">';
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -266,7 +266,7 @@
 
             $cnt=0;
 
-            echo '<div class="container mt-5">'; // Add Bootstrap container
+            echo '<div class="container mt-5 mb-5">'; // Add Bootstrap container
             echo '<div class="row align-items-center">';
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -315,7 +315,7 @@
 
             $cnt=0;
 
-            echo '<div class="container mt-5">
+            echo '<div class="container mt-5 mb-5">
                     <div class="row align-items-center">';
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -344,7 +344,7 @@
 
             $cnt=0;
 
-            echo '<div class="container mt-5">
+            echo '<div class="container mt-5 mb-5">
                     <div class="row align-items-center">';
 
 
@@ -391,7 +391,7 @@
 
             $cnt=0;
 
-            echo '<div class="container mt-5">
+            echo '<div class="container mt-5 mb-5">
                     <div class="row align-items-center">';
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -421,7 +421,7 @@
 
             $cnt=0;
 
-            echo '<div class="container mt-5">
+            echo '<div class="container mt-5 mb-5">
                     <div class="row align-items-center">';
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
