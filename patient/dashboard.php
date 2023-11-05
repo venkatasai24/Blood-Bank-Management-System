@@ -7,6 +7,11 @@ require_once("../includes/template.php");
         die();
     }
 
+    if (!isset($_GET['home']) && !isset($_GET["profile"]) && !isset($_GET["request_blood"]) && !isset($_GET["requests_history"]) && !isset($_GET["logout"])) {
+        // Redirect to the same page with the 'blood' parameter added
+        header('Location:dashboard.php?home=1');
+    }
+
     if (isset($_GET["logout"])) {
         // Unset all session variables
         unset($_SESSION["patient"]);
@@ -79,9 +84,9 @@ require_once("../includes/template.php");
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard.php" style="color: #FFF; margin: 0 10px;">Home</a>
+                    <a class="nav-link" href="?home=1" style="color: #FFF; margin: 0 10px;">Home</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="?profile=1" style="color: #FFF; margin: 0 10px;">Profile</a>
                 </li>
                 <li class="nav-item">
@@ -89,7 +94,7 @@ require_once("../includes/template.php");
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="?requests_history=1" style="color: #FFF; margin: 0 10px;">Request History</a>
-                </li>
+                </li> -->
             </ul>
             <div class="ml-auto">
                 <ul class="navbar-nav">
@@ -102,6 +107,22 @@ require_once("../includes/template.php");
     </nav>
 
     <?php
+
+        if(isset($_GET['home']))
+        {
+            $input = [
+                "Patient",
+                "Request",
+                "Submit a request for blood donation.",
+                "request",
+                "Request",
+                "View your past blood donation requests.",
+                "requests"
+            ];
+            
+            home_template($input);
+            
+        }
         
         if(isset($_GET['profile']))
         {
@@ -146,7 +167,9 @@ require_once("../includes/template.php");
             $cnt=0;
 
             echo '<div class="container mt-5">
-                    <div class="row align-items-center">';
+                    <h2 class="text-center mb-4">Request History</h2>
+                    <div class="row align-items-center">
+                ';
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 

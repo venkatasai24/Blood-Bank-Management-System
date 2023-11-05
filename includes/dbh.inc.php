@@ -1,7 +1,7 @@
 <?php
 
         $host="localhost";
-        $dbname= "sai";
+        $dbname= "BBMS";
         $dbusername= "root";
         $dbpassword= '';
 

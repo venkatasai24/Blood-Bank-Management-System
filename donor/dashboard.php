@@ -7,6 +7,11 @@ require_once("../includes/template.php");
         die();
     }
 
+    if (!isset($_GET['home']) && !isset($_GET["profile"]) && !isset($_GET["donate_blood"]) && !isset($_GET["donations_history"]) && !isset($_GET["logout"])) {
+        // Redirect to the same page with the 'blood' parameter added
+        header('Location:dashboard.php?home=1');
+    }
+
     if (isset($_GET["logout"])) {
         // Unset all session variables
         unset($_SESSION["donor"]);
@@ -81,7 +86,7 @@ require_once("../includes/template.php");
                 <li class="nav-item">
                     <a class="nav-link" href="dashboard.php" style="color: #FFF; margin: 0 10px;">Home</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="?profile=1" style="color: #FFF; margin: 0 10px;">Profile</a>
                 </li>
                 <li class="nav-item">
@@ -89,7 +94,7 @@ require_once("../includes/template.php");
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="?donations_history=1" style="color: #FFF; margin: 0 10px;">Donation History</a>
-                </li>
+                </li> -->
             </ul>
             <div class="ml-auto">
                 <ul class="navbar-nav">
@@ -102,6 +107,23 @@ require_once("../includes/template.php");
     </nav>
 
     <?php
+
+        if(isset($_GET['home']))
+        {
+            
+            $input = [
+                "Donor",
+                "Donate",
+                "Make a new blood donation appointment.",
+                "donate",
+                "Donation",
+                "View your past blood donation records.",
+                "donations"
+            ];
+            
+            home_template($input);
+
+        }
         
         if(isset($_GET['profile']))
         {
@@ -145,6 +167,7 @@ require_once("../includes/template.php");
             $cnt=0;
 
             echo '<div class="container mt-5">
+                    <h2 class="text-center mb-4">Donation History</h2>
                     <div class="row align-items-center">';
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {

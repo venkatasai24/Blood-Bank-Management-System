@@ -21,3 +21,5 @@ else
 fi
 
 echo "Credentials generated and injected into $ENV_FILE"
+echo "Username: $SUPERUSER_USERNAME"
+echo "Password: $SUPERUSER_PASSWORD"

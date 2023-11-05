@@ -164,3 +164,42 @@
         </div>
         ';
     }
+
+    function home_template(array $name)
+    {
+        echo 
+        '
+        <div class="container mt-5">
+            <h2 class="text-center">'.$name[0].' Dashboard</h2>
+            <div class="row align-items-center mt-4">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card border-danger" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+                        <div class="card-body">
+                            <h5 class="card-title">Profile</h5>
+                            <p class="card-text">View and update your profile details.</p>
+                            <a href="?profile=1" class="btn btn-primary btn-action">Go to Profile</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card border-danger" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+                        <div class="card-body">
+                            <h5 class="card-title">'.$name[1].' Blood</h5>
+                            <p class="card-text">'.$name[2].'</p>
+                            <a href="?'.$name[3].'_blood=1" class="btn btn-primary btn-action">'.$name[1].' Blood</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card border-danger" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+                        <div class="card-body">
+                            <h5 class="card-title">'.$name[4].' History</h5>
+                            <p class="card-text">'.$name[5].'</p>
+                            <a href="?'.$name[6].'_history=1" class="btn btn-primary btn-action">'.$name[4].' History</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        ';
+    }
