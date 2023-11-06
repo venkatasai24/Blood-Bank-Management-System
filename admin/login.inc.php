@@ -59,7 +59,7 @@
     function username_exists(string $username,string $pwd)
     {
         $superuserUsername = "superuser";
-        $superuserPassword = "6IcRHIEh6sf0iChf8B758g==";
+        $superuserPassword = "XXXXXXXXXXXXXXXXXXXXXXX";
     
         return $username === $superuserUsername && $pwd === $superuserPassword ;
     }

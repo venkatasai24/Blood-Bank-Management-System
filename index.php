@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/blood-drop.svg" type="image/x-icon">
     <style>
     /* Add hover effect for links */
     @media (min-width: 576px) {
@@ -21,7 +23,7 @@
         }
     }
     #animated-image {
-    margin-top: 40px;
+    margin-top: 50px;
     margin-bottom: 100px;
     animation: scaleAnimation 0.4s infinite alternate; /* Animation duration and behavior */
     transform-origin: center; /* Sets the scaling center to the image center */
@@ -58,7 +60,7 @@
         </div>
     </nav>
 
-    <div class='container text-center' style="color: #ff0000; padding-top: 50px;">
+    <div class='container text-center' style="color: #ff0000; padding-top: 100px;">
         <h1 class="display-6">Blood Bank Management System</h1>
         <p class="lead mt-3">
             This system is designed to efficiently manage blood donations, donors, and recipients, ensuring the availability of safe and life-saving blood for those in need.
@@ -66,7 +68,7 @@
         <p class="lead mt-3">
             Join us in the mission to save lives. Register as a donor or recipient and help make a difference!
         </p>
-        <img id="animated-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjKpuNmdiLq3rilYv0ClyQlEIcVPwg1Z8Xz8kQ8sHZ&s" alt="">
+        <img id="animated-image" src="images/blood-drop.svg" alt="" style="width:150px;">
     </div>
 
 

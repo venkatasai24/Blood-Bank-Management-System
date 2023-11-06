@@ -1,7 +1,8 @@
 <?php
-require_once("../includes/session.inc.php");
-require_once("../includes/dbh.inc.php");
-require_once("../includes/template.php");
+    
+    require_once("../includes/session.inc.php");
+    require_once("../includes/dbh.inc.php");
+    require_once("../includes/template.php");
     if (!isset($_SESSION["donor"])) {
         header("Location: login.php");
         die();
@@ -61,6 +62,8 @@ require_once("../includes/template.php");
     <title>Donor Dashboard</title>
     <!-- Include Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../images/blood-drop.svg" type="image/x-icon">
     <!-- Apply custom styles for the form -->
     <style>
         @media (min-width: 576px) {

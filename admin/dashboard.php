@@ -1,4 +1,5 @@
 <?php
+    
     require_once("../includes/session.inc.php");
     require_once("../includes/dbh.inc.php");
 
@@ -47,6 +48,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../images/blood-drop.svg" type="image/x-icon">
     <!-- Apply custom styles for the form -->
     <style>
         @media (min-width: 576px) {
@@ -134,7 +137,7 @@
             '
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="text-center">
-                    <img id="animated-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjKpuNmdiLq3rilYv0ClyQlEIcVPwg1Z8Xz8kQ8sHZ&s" alt="">
+                    <img id="animated-image" src="../images/blood-drop.svg" alt="">
                     <p class="mt-2">'.$blood_map[$val].'</p>
                     <p class="mt-2">' . $name . '</p>
                     </div>
