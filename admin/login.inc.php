@@ -2,6 +2,7 @@
 
     declare(strict_types= 1);
     require_once("../includes/session.inc.php");
+    require_once("../includes/dbh.inc.php");
     
     if($_SERVER["REQUEST_METHOD"]==="POST")
     {
@@ -17,7 +18,7 @@
             {
                 $errors["check_input"] = "Fill all fields!";
             }
-            if(!username_exists($username,$pwd))
+            if(!username_exists($pdo,$username,$pwd))
             {
                 $errors["incorrect"] = "Incorrect Login Info!";
             }
@@ -56,12 +57,16 @@
     {
         return empty($pwd) || empty($username);
     }
-    function username_exists(string $username,string $pwd)
+    function username_exists(object $pdo,string $username,string $pwd)
     {
-        $superuserUsername = "superuser";
-        $superuserPassword = "XXXXXXXXXXXXXXXXXXXXXXX";
-    
-        return $username === $superuserUsername && $pwd === $superuserPassword ;
+        $query = "SELECT * from admin where username=:username;";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(":username", $username);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if(!$result) return false;
+        return password_verify($pwd, $result["pwd"]);
     }
     
 ?>

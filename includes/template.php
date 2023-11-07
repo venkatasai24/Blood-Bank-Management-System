@@ -55,22 +55,27 @@
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" name="pwd" placeholder="Enter your password">
-                        </div>
-                        <div class="form-group">
-                            <label for="bloodgroup">Blood Group</label>
-                            <select class="form-control" name="blood">
-                                <option value="">Select your blood group</option>
-                                <option value="A+">A+</option>
-                                <option value="A-">A-</option>
-                                <option value="B+">B+</option>
-                                <option value="B-">B-</option>
-                                <option value="O+">O+</option>
-                                <option value="O-">O-</option>
-                                <option value="AB+">AB+</option>
-                                <option value="AB-">AB-</option>
-                            </select>
-                        </div>
-                        <!-- Add more registration fields as needed -->
+                        </div>';
+                        if($name!=="Admin Register")
+                        {
+                            echo
+                            '<div class="form-group">
+                                <label for="bloodgroup">Blood Group</label>
+                                <select class="form-control" name="blood">
+                                    <option value="">Select your blood group</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                </select>
+                            </div>';
+                        }
+                        echo
+                        '<!-- Add more registration fields as needed -->
                         <button type="submit" class="btn btn-primary btn-block">Register</button>
                     </form>
                     <p class="text-center mt-3">Already have an account? <a href="login.php">Login here</a></p>

@@ -1,24 +1,24 @@
 <?php
-
+    
     
     require_once("../includes/session.inc.php");
     require_once("../includes/template.php");
-    if(isset($_SESSION["admin"]) && isset($_GET["login"]) && $_GET["login"]==="success")
+    if(isset($_SESSION["admin"]) && isset($_GET["register"]) && $_GET["register"]==="success")
     {
         header("Location:dashboard.php");
     }
     function check_errors()
     {
-        if(isset($_SESSION["admin_error_login"]))
+        if(isset($_SESSION["admin_error_register"]))
         {
-            $errors = $_SESSION["admin_error_login"];
+            $errors = $_SESSION["admin_error_register"];
             echo "<br>";
             foreach ($errors as $error) {
                 echo '<div class="alert alert-light" style="color:#ff0000;" role="alert">';
                 echo $error;
                 echo '</div>';
             }
-            unset($_SESSION["admin_error_login"]);
+            unset($_SESSION["admin_error_register"]);
         }
     }
 ?>
@@ -28,7 +28,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
+    <title>Admin Register</title>
     <!-- Include Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- fontawesome -->
@@ -53,7 +53,7 @@
     <div class="container">
         <?php 
             check_errors();
-            login_template("login.inc.php","Admin Login","<p class='text-center mt-3'>Don't have an account? <a href='register.php'>Register here</a></p>");
+            register_template("Admin Register");
         ?>
     </div>
     <!-- Include Bootstrap JS and jQuery CDN -->
