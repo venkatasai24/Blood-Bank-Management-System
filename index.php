@@ -68,7 +68,7 @@
         <p class="lead mt-3">
             Join us in the mission to save lives. Register as a donor or recipient and help make a difference!
         </p>
-        <img id="animated-image" src="images/blood-drop.svg" alt="" style="width:150px;">
+        <img id="animated-image" src="images/blood.png" alt="">
     </div>
 
 

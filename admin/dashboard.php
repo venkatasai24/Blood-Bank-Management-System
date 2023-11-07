@@ -135,7 +135,7 @@
 
             echo 
             '
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
                     <div class="text-center">
                     <img id="animated-image" src="../images/blood-drop.svg" alt="">
                     <p class="mt-2">'.$blood_map[$val].'</p>
