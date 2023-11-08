@@ -80,7 +80,9 @@
 </head>
 <body>
     <!-- Bootstrap navigation bar with responsive button -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#FF0000;">
+    <div class="container" style="margin-bottom: 100px;">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#FF0000;">
+    <!-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#FF0000;"> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -108,6 +110,7 @@
             </div>
         </div>
     </nav>
+    </div>
 
     <?php
 
