@@ -1,7 +1,12 @@
 <?php
 
+    
     require_once("../includes/session.inc.php");
     require_once("../includes/template.php");
+    if(isset($_SESSION["admin"]) && isset($_GET["login"]) && $_GET["login"]==="success")
+    {
+        header("Location:dashboard.php");
+    }
     function check_errors()
     {
         if(isset($_SESSION["admin_error_login"]))
@@ -14,10 +19,6 @@
                 echo '</div>';
             }
             unset($_SESSION["admin_error_login"]);
-        }
-        else if(isset($_SESSION["admin"]) && isset($_GET["login"]) && $_GET["login"]==="success")
-        {
-            header("Location:dashboard.php");
         }
     }
 ?>
@@ -32,6 +33,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../images/blood-drop.svg" type="image/x-icon">
     <!-- Apply custom styles for the form -->
     <style>
         body {
@@ -50,7 +53,7 @@
     <div class="container">
         <?php 
             check_errors();
-            login_template("login.inc.php","Admin Login","");
+            login_template("login.inc.php","Admin Login","<p class='text-center mt-3'>Don't have an account? <a href='register.php'>Register here</a></p>");
         ?>
     </div>
     <!-- Include Bootstrap JS and jQuery CDN -->

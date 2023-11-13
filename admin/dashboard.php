@@ -1,4 +1,5 @@
 <?php
+    
     require_once("../includes/session.inc.php");
     require_once("../includes/dbh.inc.php");
 
@@ -47,6 +48,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../images/blood-drop.svg" type="image/x-icon">
     <!-- Apply custom styles for the form -->
     <style>
         @media (min-width: 576px) {
@@ -77,7 +80,8 @@
 </head>
 <body>
     <!-- Bootstrap navigation bar with responsive button -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#FF0000;">
+    <div class="container" style="margin-bottom: 100px;">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#FF0000;">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -114,6 +118,7 @@
             </div>
         </div>
     </nav>
+    </div>
     <?php
     
     
@@ -132,9 +137,9 @@
 
             echo 
             '
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
                     <div class="text-center">
-                    <img id="animated-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjKpuNmdiLq3rilYv0ClyQlEIcVPwg1Z8Xz8kQ8sHZ&s" alt="">
+                    <img id="animated-image" src="../images/blood-drop.svg" alt="">
                     <p class="mt-2">'.$blood_map[$val].'</p>
                     <p class="mt-2">' . $name . '</p>
                     </div>
@@ -170,7 +175,7 @@
             blood_group($row["ON"],"ON");
             echo '</div>
             <div class="row">
-                <div class="col-md-4 offset-md-4 mt-5">
+                <div class="col-md-4 offset-md-4 mt-5 mb-5">
                             <div class="form-container">
                             <h2 class="text-center">Update Blood</h2>
                             <form action="update.php" method="post">
@@ -239,7 +244,7 @@
             $cnt=0;
 
             // Table header
-            echo '<div class="container mt-5">'; // Add Bootstrap container
+            echo '<div class="container mt-5 mb-5">'; // Add Bootstrap container
             echo '<div class="row align-items-center">';
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -266,7 +271,7 @@
 
             $cnt=0;
 
-            echo '<div class="container mt-5">'; // Add Bootstrap container
+            echo '<div class="container mt-5 mb-5">'; // Add Bootstrap container
             echo '<div class="row align-items-center">';
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -315,7 +320,7 @@
 
             $cnt=0;
 
-            echo '<div class="container mt-5">
+            echo '<div class="container mt-5 mb-5">
                     <div class="row align-items-center">';
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -344,7 +349,7 @@
 
             $cnt=0;
 
-            echo '<div class="container mt-5">
+            echo '<div class="container mt-5 mb-5">
                     <div class="row align-items-center">';
 
 
@@ -391,7 +396,7 @@
 
             $cnt=0;
 
-            echo '<div class="container mt-5">
+            echo '<div class="container mt-5 mb-5">
                     <div class="row align-items-center">';
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -421,7 +426,7 @@
 
             $cnt=0;
 
-            echo '<div class="container mt-5">
+            echo '<div class="container mt-5 mb-5">
                     <div class="row align-items-center">';
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {

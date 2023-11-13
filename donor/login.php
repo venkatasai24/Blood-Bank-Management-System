@@ -1,7 +1,12 @@
 <?php
 
+    
     require_once("../includes/session.inc.php");
     require_once("../includes/template.php");
+    if(isset($_SESSION["donor"]) && isset($_GET["login"]) && $_GET["login"]==="success")
+    {
+        header("Location:dashboard.php");
+    }
     function check_errors()
     {
         if(isset($_SESSION["donor_error_login"]))
@@ -14,10 +19,6 @@
                 echo '</div>';
             }
             unset($_SESSION["donor_error_login"]);
-        }
-        else if(isset($_SESSION["donor"]) && isset($_GET["login"]) && $_GET["login"]==="success")
-        {
-            header("Location:dashboard.php");
         }
     }
 ?>
@@ -32,6 +33,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../images/blood-drop.svg" type="image/x-icon">
     <!-- Apply custom styles for the form -->
     <style>
         body {

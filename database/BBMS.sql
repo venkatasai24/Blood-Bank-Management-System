@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 05, 2023 at 02:34 PM
+-- Generation Time: Nov 13, 2023 at 06:28 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `BBMS`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `pwd` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `name`, `username`, `email`, `pwd`) VALUES
+(1, 'doctor', 'doctor', 'doctor@gmail.com', '$2y$10$KMA/31/rNdILcmMWvROqVO1mk4kAE0jvw8HrWUCMEW1xVgaoYtBZi');
 
 -- --------------------------------------------------------
 
@@ -44,7 +65,7 @@ CREATE TABLE `blood` (
 --
 
 INSERT INTO `blood` (`id`, `AP`, `AN`, `BP`, `BN`, `ABP`, `ABN`, `OP`, `ON`) VALUES
-(1, 0, 2, 3, 4, 3, 2, 7, 4);
+(1, 0, 2, 3, 4, 5, 2, 7, 4);
 
 -- --------------------------------------------------------
 
@@ -67,7 +88,8 @@ CREATE TABLE `donate` (
 --
 
 INSERT INTO `donate` (`id`, `donor_id`, `username`, `disease`, `blood`, `unit`, `status`) VALUES
-(4, 4, 'tester', 'asdaef', 'AB+', 3, 'approved');
+(4, 4, 'tester', 'asdaef', 'AB+', 3, 'approved'),
+(5, 4, 'tester', 'sdgg', 'AB+', 2, 'approved');
 
 -- --------------------------------------------------------
 
@@ -139,11 +161,20 @@ INSERT INTO `request` (`id`, `patient_id`, `username`, `reason`, `blood`, `unit`
 (3, 7, 'tester', 'hhghg', 'A-', 6, 'approved'),
 (4, 7, 'tester', 'fsgb', 'A-', 5, 'rejected due to insufficient blood stock of A-'),
 (6, 7, 'tester', 'dfndfjs', 'A-', 2, 'approved'),
-(7, 7, 'tester', 'gdh', 'A-', 4, 'rejected due to insufficient blood stock of A-');
+(7, 7, 'tester', 'gdh', 'A-', 4, 'rejected due to insufficient blood stock of A-'),
+(8, 7, 'tester', 'dfabgr', 'A-', 3, 'rejected due to insufficient blood stock of A-'),
+(9, 7, 'tester', 'asgwh', 'A-', 6, 'rejected'),
+(10, 7, 'tester', 'asfasg', 'A-', 1, 'rejected');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `blood`
@@ -180,6 +211,12 @@ ALTER TABLE `request`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `blood`
 --
 ALTER TABLE `blood`
@@ -189,7 +226,7 @@ ALTER TABLE `blood`
 -- AUTO_INCREMENT for table `donate`
 --
 ALTER TABLE `donate`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `donor`
@@ -207,7 +244,7 @@ ALTER TABLE `patient`
 -- AUTO_INCREMENT for table `request`
 --
 ALTER TABLE `request`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

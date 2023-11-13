@@ -2,9 +2,7 @@
 
     declare(strict_types= 1);
     require_once("../includes/session.inc.php");
-    
-    $envFilePath ='../.env';
-    loadEnv($envFilePath);
+    require_once("../includes/dbh.inc.php");
     
     if($_SERVER["REQUEST_METHOD"]==="POST")
     {
@@ -20,7 +18,7 @@
             {
                 $errors["check_input"] = "Fill all fields!";
             }
-            if(!username_exists($username,$pwd))
+            if(!username_exists($pdo,$username,$pwd))
             {
                 $errors["incorrect"] = "Incorrect Login Info!";
             }
@@ -55,28 +53,20 @@
         header("Location:login.php");
         die();
     }
-    function loadEnv($filePath)
-    {
-        if (file_exists($filePath)) {
-            $lines = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-
-            foreach ($lines as $line) {
-                list($name, $value) = explode('=', $line, 2);
-                $_ENV[$name] = $value;
-                putenv("$name=$value");
-            }
-        }
-    }
     function checkInput(string $pwd, string $username)
     {
         return empty($pwd) || empty($username);
     }
-    function username_exists(string $username,string $pwd)
+    function username_exists(object $pdo,string $username,string $pwd)
     {
-        $superuserUsername = getenv('SUPERUSER_USERNAME');
-        $superuserPassword = getenv('SUPERUSER_PASSWORD');
-    
-        return $username === $superuserUsername && $pwd === $superuserPassword ;
+        $query = "SELECT * from admin where username=:username;";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(":username", $username);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if(!$result) return false;
+        return password_verify($pwd, $result["pwd"]);
     }
     
 ?>

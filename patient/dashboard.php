@@ -1,7 +1,8 @@
 <?php
-require_once("../includes/session.inc.php");
-require_once("../includes/dbh.inc.php");
-require_once("../includes/template.php");
+    
+    require_once("../includes/session.inc.php");
+    require_once("../includes/dbh.inc.php");
+    require_once("../includes/template.php");
     if (!isset($_SESSION["patient"])) {
         header("Location: login.php");
         die();
@@ -61,6 +62,8 @@ require_once("../includes/template.php");
     <title>Patient Dashboard</title>
     <!-- Include Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../images/blood-drop.svg" type="image/x-icon">
     <!-- Apply custom styles for the form -->
     <style>
         @media (min-width: 576px) {
@@ -77,7 +80,9 @@ require_once("../includes/template.php");
 </head>
 <body>
     <!-- Bootstrap navigation bar with responsive button -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#FF0000;">
+    <div class="container" style="margin-bottom: 100px;">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#FF0000;">
+    <!-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#FF0000;"> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -105,6 +110,7 @@ require_once("../includes/template.php");
             </div>
         </div>
     </nav>
+    </div>
 
     <?php
 
@@ -166,7 +172,7 @@ require_once("../includes/template.php");
 
             $cnt=0;
 
-            echo '<div class="container mt-5">
+            echo '<div class="container mt-5 mb-5">
                     <h2 class="text-center mb-4">Request History</h2>
                     <div class="row align-items-center">
                 ';
