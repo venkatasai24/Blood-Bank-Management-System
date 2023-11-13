@@ -11,6 +11,10 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/blood-drop.svg" type="image/x-icon">
     <style>
+    html {
+        min-height: 100%;
+        position: relative;
+    }
     /* Add hover effect for links */
     @media (min-width: 576px) {
         .navbar-nav .nav-item a {
@@ -63,7 +67,7 @@
     </nav>
     </div>
 
-    <div class='container text-center' style="color: #ff0000; padding-top: 100px;">
+    <div class='container text-center' style="color: #ff0000; padding-top: 100px;padding-bottom:50px;">
         <h1 class="display-6">Blood Bank Management System</h1>
         <p class="lead mt-3">
             This system is designed to efficiently manage blood donations, donors, and recipients, ensuring the availability of safe and life-saving blood for those in need.
@@ -81,4 +85,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+<footer class="footer" style="background-color: #FF0000; color: #FFF; padding: 15px; text-align: center; position: absolute; bottom: 0; width: 100%;">
+    <!-- Add content for your footer here -->
+    &copy; <a style="color:#FFF;" href="https://github.com/venkatasai24">Venkatasai24</a> and Team. All rights reserved. 2023
+</footer>
 </html>
