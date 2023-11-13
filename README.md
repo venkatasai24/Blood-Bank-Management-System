@@ -1,5 +1,7 @@
 # BBMS
 
+![alt](images/home.png)
+
 Blood Bank Management System (BBMS) is a web-based application designed to efficiently manage blood donations, donors, and recipients. It provides an integrated platform for donors and recipients to ensure the availability of safe and life-saving blood for those in need.
 
 ## Table Of Contents
@@ -88,6 +90,7 @@ Contributions are always welcome! If you'd like to contribute to the project, pl
 ## License
 
 This project is licensed under the [MIT License](https://github.com/venkatasai24/BBMS/blob/main/LICENSE).
+
 
 
 
