@@ -29,6 +29,7 @@
     #animated-image {
     margin-top: 50px;
     margin-bottom: 100px;
+    height:200px;
     animation: scaleAnimation 0.4s infinite alternate; /* Animation duration and behavior */
     transform-origin: center; /* Sets the scaling center to the image center */
     }
@@ -43,31 +44,31 @@
     }
     </style>
 </head>
-<body>
+<body style="background: linear-gradient(45deg, #b6ffb6, #66b2ff);">
     <!-- Bootstrap navigation bar with responsive button -->
     <div class="container" style="margin-bottom: 50px;">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#FF0000;">
-    <!-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#FF0000;"> -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#b6ffb6;">
+    <!-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#ffb6b6;"> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="patient/login.php" style="color: #FFF; margin: 0 10px;">Patient</a>
+                    <a class="nav-link" href="patient/login.php" style="color: #333333; margin: 0 10px;">Patient</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="donor/login.php" style="color: #FFF; margin: 0 10px;">Donor</a>
+                    <a class="nav-link" href="donor/login.php" style="color: #333333; margin: 0 10px;">Donor</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="admin/login.php" style="color: #FFF;margin: 0 10px;">Doctor</a>
+                    <a class="nav-link" href="admin/login.php" style="color: #333333;margin: 0 10px;">Doctor</a>
                 </li>
             </ul>
         </div>
     </nav>
     </div>
 
-    <div class='container text-center' style="color: #ff0000; padding-top: 100px;padding-bottom:50px;">
+    <div class='container text-center' style="color:#fff;padding-top: 100px;padding-bottom:50px;">
         <h1 class="display-6">Blood Bank Management System</h1>
         <p class="lead mt-3">
             This system is designed to efficiently manage blood donations, donors, and recipients, ensuring the availability of safe and life-saving blood for those in need.
@@ -75,7 +76,7 @@
         <p class="lead mt-3">
             Join us in the mission to save lives. Register as a donor or recipient and help make a difference!
         </p>
-        <img id="animated-image" src="images/blood.png" alt="">
+        <img id="animated-image" src="images/plain.png" alt="">
     </div>
 
 
@@ -85,7 +86,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-<footer class="footer" style="background-color: #FF0000; color: #FFF; padding: 15px; text-align: center; position: absolute; bottom: 0; width: 100%;">
+<footer class="footer" style="background-color: #66b2ff; color: #FFF; padding: 15px; text-align: center; position: absolute; bottom: 0; width: 100%;">
     <!-- Add content for your footer here -->
     &copy; <a style="color:#FFF;" href="https://github.com/venkatasai24">Venkatasai24</a> and Team. All rights reserved. 2023
 </footer>

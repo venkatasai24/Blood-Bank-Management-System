@@ -37,8 +37,14 @@
     <link rel="shortcut icon" href="../images/blood-drop.svg" type="image/x-icon">
     <!-- Apply custom styles for the form -->
     <style>
+        html, body {
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            background-color: #FF0000;
+            background: linear-gradient(45deg, #b6ffb6, #66b2ff);
         }
         .form-container {
             background-color: white;
