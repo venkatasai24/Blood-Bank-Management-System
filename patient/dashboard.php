@@ -66,9 +66,18 @@
     <link rel="shortcut icon" href="../images/blood-drop.svg" type="image/x-icon">
     <!-- Apply custom styles for the form -->
     <style>
+        html, body {
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(45deg, #b6ffb6, #66b2ff);
+        }
         @media (min-width: 576px) {
         .navbar-nav .nav-item a {
-            color: #FFF;
+            color:#333333;
             transition: transform 0.3s; /* Smooth transition effect for scale */
         }
     
@@ -81,7 +90,7 @@
 <body>
     <!-- Bootstrap navigation bar with responsive button -->
     <div class="container" style="margin-bottom: 100px;">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#FF0000;">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#b6ffb6;">
     <!-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#FF0000;"> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -89,22 +98,22 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="?home=1" style="color: #FFF; margin: 0 10px;">Home</a>
+                    <a class="nav-link" href="?home=1" style="color:#333333; margin: 0 10px;">Home</a>
                 </li>
                 <!-- <li class="nav-item">
-                    <a class="nav-link" href="?profile=1" style="color: #FFF; margin: 0 10px;">Profile</a>
+                    <a class="nav-link" href="?profile=1" style="color:#333333; margin: 0 10px;">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="?request_blood=1" style="color: #FFF; margin: 0 10px;">Request Blood</a>
+                    <a class="nav-link" href="?request_blood=1" style="color:#333333; margin: 0 10px;">Request Blood</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="?requests_history=1" style="color: #FFF; margin: 0 10px;">Request History</a>
+                    <a class="nav-link" href="?requests_history=1" style="color:#333333; margin: 0 10px;">Request History</a>
                 </li> -->
             </ul>
             <div class="ml-auto">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="?logout=1" style="color: #FFF;margin: 0 10px;">Logout</a>
+                        <a class="nav-link" href="?logout=1" style="color:#333333;margin: 0 10px;">Logout</a>
                     </li>
                 </ul>
             </div>
