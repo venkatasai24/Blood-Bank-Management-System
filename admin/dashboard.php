@@ -61,15 +61,13 @@
         body {
             background: linear-gradient(45deg, #b6ffb6, #66b2ff);
         }
-        @media (min-width: 576px) {
-            .navbar-nav .nav-item a {
-                color:#333333;
-                transition: transform 0.3s; /* Smooth transition effect for scale */
-            }
-        
-            .navbar-nav .nav-item a:hover {
-                transform: scale(1.25); /* Increase font size on hover */
-            }
+        .navbar-nav .nav-item a {
+            color:#333333;
+            transition: transform 0.3s; /* Smooth transition effect for scale */
+        }
+    
+        .navbar-nav .nav-item a:hover {
+            transform: scale(1.25); /* Increase font size on hover */
         }
         #animated-image {
         height:25px;
@@ -85,6 +83,14 @@
             transform: scale(1.25); /* End with 125% scaling */
         }
     }
+        @media (max-width: 991px) {
+            .navbar-nav.mr-auto {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-grow: 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -95,7 +101,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="?blood=1" style="color:#333333; margin: 0 10px;">Home</a>
                 </li>
@@ -117,14 +123,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="?requests_history=1" style="color:#333333; margin: 0 10px;">Requests History</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="?logout=1" style="color:#333333;margin: 0 10px;">Logout</a>
+                </li>
             </ul>
-            <div class="ml-auto">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="?logout=1" style="color:#333333;margin: 0 10px;">Logout</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
     </div>
@@ -219,9 +221,24 @@
 
         function print_details(array $row,string $type)
         {
-            echo '<div class="col-lg-3 col-md-4 col-sm-6 mb-4">'; // Adjust the column width for responsiveness
-            echo '<div class="card border-danger" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">';
-            echo '<div class="card-body">';
+            echo
+            '
+            <style>
+            .transparent-bg {
+                transition: background 0.3s, transform 0.3s;
+                border: 1px solid #fff;
+                border-radius:16px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            }
+            
+            .transparent-bg:hover {
+                transform: scale(1.05); /* Scale up the card on hover */
+            }                       
+            </style>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> 
+                <div class="card" style="background:transparent;border:none;border-radius:16px;">
+                    <div class="card-body transparent-bg">
+            ';
             echo '<b><p class="card-title">' . $row['username'] . '</p></b>';
             echo '<p class="card-text">Id : ' . $row['id'] . '</p>';
             echo '<p class="card-text">Name : ' . $row['name'] . '</p>';
@@ -302,9 +319,21 @@
         {
             echo
             '
+            <style>
+            .transparent-bg {
+                transition: background 0.3s, transform 0.3s;
+                border: 1px solid #fff;
+                border-radius:16px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            }
+            
+            .transparent-bg:hover {
+                transform: scale(1.05); /* Scale up the card on hover */
+            }                       
+            </style>
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> 
-                <div class="card border-danger" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
-                    <div class="card-body">
+                <div class="card" style="background:transparent;border:none;border-radius:16px;">
+                    <div class="card-body transparent-bg">
                         <b><p class="card-title">' . $row['username'] . '</p></b>
                         <p class="card-text">'.$name1.' : ' . $row[$name2] . '</p>
                         <p class="card-text">Blood Group : ' . $row['blood'] . '</p>
@@ -382,9 +411,21 @@
         {
             echo
             '
+            <style>
+            .transparent-bg {
+                transition: background 0.3s, transform 0.3s;
+                border: 1px solid #fff;
+                border-radius:16px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            }
+            
+            .transparent-bg:hover {
+                transform: scale(1.05); /* Scale up the card on hover */
+            }                       
+            </style>
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> 
-                <div class="card border-danger" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
-                    <div class="card-body">
+                <div class="card" style="background:transparent;border:none;border-radius:16px;">
+                    <div class="card-body transparent-bg">
                         <b><p class="card-title">Id : ' . $row[$name1] . '</p></b>
                         <p class="card-text">'.$name2.' : ' . $row[$name3] . '</p>
                         <p class="card-text">Blood Group : ' . $row['blood'] . '</p>

@@ -59,7 +59,7 @@
     <div class="container">
         <?php 
             check_errors();
-            login_template("login.inc.php","Admin Login","<p class='text-center mt-3'>Don't have an account? <a href='register.php'>Register here</a></p>");
+            login_template("Admin Login");
         ?>
     </div>
     <!-- Include Bootstrap JS and jQuery CDN -->

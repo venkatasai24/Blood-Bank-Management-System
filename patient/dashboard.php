@@ -75,7 +75,7 @@
         body {
             background: linear-gradient(45deg, #b6ffb6, #66b2ff);
         }
-        @media (min-width: 576px) {
+
         .navbar-nav .nav-item a {
             color:#333333;
             transition: transform 0.3s; /* Smooth transition effect for scale */
@@ -84,7 +84,15 @@
         .navbar-nav .nav-item a:hover {
             transform: scale(1.25); /* Increase font size on hover */
         }
-    }
+
+        @media (max-width: 991px) {
+            .navbar-nav.mr-auto {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-grow: 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -96,27 +104,14 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="?home=1" style="color:#333333; margin: 0 10px;">Home</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="?profile=1" style="color:#333333; margin: 0 10px;">Profile</a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="?request_blood=1" style="color:#333333; margin: 0 10px;">Request Blood</a>
+                    <a class="nav-link" href="?logout=1" style="color:#333333;margin: 0 10px;">Logout</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="?requests_history=1" style="color:#333333; margin: 0 10px;">Request History</a>
-                </li> -->
             </ul>
-            <div class="ml-auto">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="?logout=1" style="color:#333333;margin: 0 10px;">Logout</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
     </div>

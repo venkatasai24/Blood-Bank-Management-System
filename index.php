@@ -42,6 +42,15 @@
             transform: scale(1.25); /* End with 125% scaling */
         }
     }
+
+    @media (max-width: 991px) {
+        .navbar-nav.mr-auto {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+    }
     </style>
 </head>
 <body style="background: linear-gradient(45deg, #b6ffb6, #66b2ff);">
@@ -53,7 +62,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="patient/login.php" style="color: #333333; margin: 0 10px;">Patient</a>
                 </li>
