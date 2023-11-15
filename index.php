@@ -16,31 +16,29 @@
         position: relative;
     }
     /* Add hover effect for links */
-    @media (min-width: 576px) {
-        .navbar-nav .nav-item a {
-            color: #FFF;
-            transition: transform 0.3s; /* Smooth transition effect for scale */
-        }
-    
-        .navbar-nav .nav-item a:hover {
-            transform: scale(1.25); /* Increase font size on hover */
-        }
-    }
-    #animated-image {
-    margin-top: 50px;
-    margin-bottom: 100px;
-    height:200px;
-    animation: scaleAnimation 0.4s infinite alternate; /* Animation duration and behavior */
-    transform-origin: center; /* Sets the scaling center to the image center */
+    .navbar-nav .nav-item a {
+        position: relative;
+        color: #333333;
+        text-decoration: none;
+        overflow: hidden;
     }
 
-    @keyframes scaleAnimation {
-        0% {
-            transform: scale(1); /* Start with the original size */
-        }
-        100% {
-            transform: scale(1.25); /* End with 125% scaling */
-        }
+    /* Create a pseudo-element for the border effect */
+    .navbar-nav .nav-item a::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: #66b2ff;
+        transform: translateX(-50%); /* Center the pseudo-element */
+        transition: width 0.3s; /* Smooth transition effect for width */
+    }
+
+    /* On hover, extend the width to both sides */
+    .navbar-nav .nav-item a:hover::before {
+        width: 100%;
     }
 
     @media (max-width: 991px) {
@@ -51,12 +49,15 @@
             flex-grow: 1;
         }
     }
+    .navbar-shading {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Add a subtle box shadow for a lighting effect */
+    }
     </style>
 </head>
 <body style="background: linear-gradient(45deg, #b6ffb6, #66b2ff);">
     <!-- Bootstrap navigation bar with responsive button -->
     <div class="container" style="margin-bottom: 50px;">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#b6ffb6;">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shading" style="background-color:#b6ffb6;">
     <!-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#ffb6b6;"> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -70,7 +71,7 @@
                     <a class="nav-link" href="donor/login.php" style="color: #333333; margin: 0 10px;">Donor</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="admin/login.php" style="color: #333333;margin: 0 10px;">Doctor</a>
+                    <a class="nav-link" href="admin/login.php" style="color: #333333;margin: 0 10px;">Admin</a>
                 </li>
             </ul>
         </div>
@@ -79,13 +80,19 @@
 
     <div class='container text-center' style="color:#fff;padding-top: 100px;padding-bottom:50px;">
         <h1 class="display-6">Blood Bank Management System</h1>
-        <p class="lead mt-3">
-            This system is designed to efficiently manage blood donations, donors, and recipients, ensuring the availability of safe and life-saving blood for those in need.
-        </p>
-        <p class="lead mt-3">
-            Join us in the mission to save lives. Register as a donor or recipient and help make a difference!
-        </p>
-        <img id="animated-image" src="images/plain.png" alt="">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <p class="lead mt-3">
+                    This system is designed to efficiently manage blood donations, donors, and recipients, ensuring the availability of safe and life-saving blood for those in need.
+                </p>
+                <p class="lead mt-3 mb-5">
+                    Join us in the mission to save lives. Register as a donor or recipient and help make a difference!
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <img id="animated-image" src="images/home.svg" alt="" class="img-fluid d-none d-lg-block">
+            </div>
+        </div>
     </div>
 
 

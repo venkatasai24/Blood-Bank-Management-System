@@ -5,7 +5,7 @@
     
     session_set_cookie_params([
         "lifetime" => 3600, // Set your desired session lifetime
-        "domain" => "bbms-nitc.000webhostapp.com",
+        "domain" => "localhost",
         "path" => "/",
         "secure" => true,
         "httponly" => true

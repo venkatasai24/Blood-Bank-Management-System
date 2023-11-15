@@ -224,7 +224,7 @@
         '
         <div class="container">
             <div class="row">
-                <div class="col-md-4 offset-md-4 mt-5">
+                <div class="col-md-4 offset-md-4">
                     <div class="form-container">
                     <h2 class="text-center">Profile</h2>
                     <form action="update_delete.php" method="post">
@@ -266,7 +266,7 @@
         '
         <div class="container">
             <div class="row">
-                <div class="col-md-4 offset-md-4 mt-5">
+                <div class="col-md-4 offset-md-4">
                     <div class="form-container">
                     <h2 class="text-center">'.$name.'</h2>
                     <form action='.$path.' method="post">
@@ -318,51 +318,59 @@
 
     function home_template(array $name)
     {
+        $imagePath = ($name[0] === 'Donor') ? '../images/donor-dashboard.svg' : '../images/patient-dashboard.svg';
         echo 
         '
-        <style>
-        .transparent-bg {
-            background: #b6ffb6;
-            transition: background 0.3s, transform 0.3s;
-            border: 1px solid #66b2ff;
-            border-radius:16px;
-        }
-        
-        .transparent-bg:hover {
-            transform: scale(1.05); /* Scale up the card on hover */
-        }                       
-        </style>
-        <div class="container mt-5">
-            <h2 class="text-center">'.$name[0].' Dashboard</h2>
-            <div class="row align-items-center mt-4">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);border: 1px solid #66b2ff;border-radius:16px;">
-                        <div class="card-body transparent-bg">
-                            <h5 class="card-title">Profile</h5>
-                            <p class="card-text">View and update your profile details.</p>
-                            <a href="?profile=1" class="btn btn-primary btn-action">Go to Profile</a>
-                        </div>
+            <style>
+                .transparent-bg {
+                    background: transparent;
+                    transition: background 0.3s, transform 0.3s;
+                    border: 2px solid #b6ffb6;
+                    border-radius: 16px;
+                }
+
+                .transparent-bg:hover {
+                    transform: translateY(-5px);
+                }
+            </style>
+            <div class="container mt-5">
+                <h2 class="text-center mb-4">' . $name[0] . ' Dashboard</h2>
+                <div class="row align-items-center mt-4">
+                    <div class="col-lg-6 mb-4">
+                        <img src='.$imagePath.' class="img-fluid d-none d-lg-block">
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);border: 1px solid #66b2ff;border-radius:16px;">
-                        <div class="card-body transparent-bg">
-                            <h5 class="card-title">'.$name[1].' Blood</h5>
-                            <p class="card-text">'.$name[2].'</p>
-                            <a href="?'.$name[3].'_blood=1" class="btn btn-primary btn-action">'.$name[1].' Blood</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);border: 1px solid #66b2ff;border-radius:16px;">
-                        <div class="card-body transparent-bg">
-                            <h5 class="card-title">'.$name[4].' History</h5>
-                            <p class="card-text">'.$name[5].'</p>
-                            <a href="?'.$name[6].'_history=1" class="btn btn-primary btn-action">'.$name[4].' History</a>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <div class="card" style="border: none; border-radius: 16px; background: transparent;">
+                                    <div class="card-body transparent-bg">
+                                        <h5 class="card-title">Profile</h5>
+                                        <p class="card-text">View and update your profile details.</p>
+                                        <a href="?profile=1" class="btn btn-primary">Go to Profile</a>
+                                    </div>
+                                </div>
+                                </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="card" style="border: none; border-radius: 16px; background: transparent;">
+                                    <div class="card-body transparent-bg">
+                                        <h5 class="card-title">' . $name[1] . ' Blood</h5>
+                                        <p class="card-text">' . $name[2] . '</p>
+                                        <a href="?' . $name[3] . '_blood=1" class="btn btn-primary btn-action">' . $name[1] . ' Blood</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-2">
+                                <div class="card" style="border: none; border-radius: 16px; background: transparent;">
+                                    <div class="card-body transparent-bg">
+                                        <h5 class="card-title">' . $name[4] . ' History</h5>
+                                        <p class="card-text">' . $name[5] . '</p>
+                                        <a href="?' . $name[6] . '_history=1" class="btn btn-primary btn-action">' . $name[4] . ' History</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         ';
     }

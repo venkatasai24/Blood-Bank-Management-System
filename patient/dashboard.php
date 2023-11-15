@@ -77,12 +77,28 @@
         }
 
         .navbar-nav .nav-item a {
-            color:#333333;
-            transition: transform 0.3s; /* Smooth transition effect for scale */
+            position: relative;
+            color: #333333;
+            text-decoration: none;
+            overflow: hidden;
         }
-    
-        .navbar-nav .nav-item a:hover {
-            transform: scale(1.25); /* Increase font size on hover */
+
+        /* Create a pseudo-element for the border effect */
+        .navbar-nav .nav-item a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #66b2ff;
+            transform: translateX(-50%); /* Center the pseudo-element */
+            transition: width 0.3s; /* Smooth transition effect for width */
+        }
+
+        /* On hover, extend the width to both sides */
+        .navbar-nav .nav-item a:hover::before {
+            width: 100%;
         }
 
         @media (max-width: 991px) {
@@ -93,12 +109,16 @@
                 flex-grow: 1;
             }
         }
+
+        .navbar-shading {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Add a subtle box shadow for a lighting effect */
+        }
     </style>
 </head>
 <body>
     <!-- Bootstrap navigation bar with responsive button -->
     <div class="container" style="margin-bottom: 100px;">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#b6ffb6;">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shading" style="background-color:#b6ffb6;">
     <!-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#FF0000;"> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
