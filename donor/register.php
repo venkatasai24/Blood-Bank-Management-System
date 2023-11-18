@@ -53,10 +53,16 @@
             margin: 50px auto;
             max-width: 400px;
         }
+        .navbar-shading {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Add a subtle box shadow for a lighting effect */
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="margin-top:50px;">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shading" style="background-color:#b6ffb6;">
+        <a class="navbar-brand" href="../index.php" style="color: #fff;font-size:22px;text-shadow: 2px 2px 2px #66b2ff;letter-spacing:1px;font-weight:bold;">BBMS</a>
+    </nav>
         <?php 
             check_errors();
             register_template("Donor Register");

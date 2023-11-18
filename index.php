@@ -42,7 +42,7 @@
     }
 
     @media (max-width: 991px) {
-        .navbar-nav.mr-auto {
+        .navbar-nav.ml-auto {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -57,13 +57,13 @@
 <body style="background: linear-gradient(45deg, #b6ffb6, #66b2ff);">
     <!-- Bootstrap navigation bar with responsive button -->
     <div class="container" style="margin-bottom: 50px;">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shading" style="background-color:#b6ffb6;">
-    <!-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#ffb6b6;"> -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shading" style="background-color:#b6ffb6;">
+        <a class="navbar-brand" href="index.php" style="color: #fff;font-size:22px;text-shadow: 2px 2px 2px #66b2ff;letter-spacing:1px;font-weight:bold;">BBMS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="patient/login.php" style="color: #333333; margin: 0 10px;">Patient</a>
                 </li>
@@ -76,7 +76,7 @@
             </ul>
         </div>
     </nav>
-    </div>
+</div>
 
     <div class='container text-center' style="color:#fff;padding-top: 100px;padding-bottom:50px;">
         <h1 class="display-6">Blood Bank Management System</h1>

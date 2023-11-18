@@ -17,22 +17,12 @@
                 $stmt = $pdo->prepare($query);
                 $stmt->bindParam(":id",$id);
                 $stmt->execute();
-
-                $query = "DELETE from request where patient_id=:id;";
-                $stmt = $pdo->prepare($query);
-                $stmt->bindParam(":id",$id);
-                $stmt->execute();
                 
                 header('Location:dashboard.php?patients=1');
             }
             else if(isset($_POST['donor']))
             {
                 $query = "DELETE from donor where id=:id;";
-                $stmt = $pdo->prepare($query);
-                $stmt->bindParam(":id",$id);
-                $stmt->execute();
-
-                $query = "DELETE from donate where donor_id=:id;";
                 $stmt = $pdo->prepare($query);
                 $stmt->bindParam(":id",$id);
                 $stmt->execute();

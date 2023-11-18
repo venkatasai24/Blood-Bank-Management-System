@@ -2,15 +2,16 @@
     
     require_once("../includes/session.inc.php");
     require_once("../includes/dbh.inc.php");
+    require_once("../includes/template.php");
 
     if (!isset($_SESSION["admin"])) {
         header("Location:login.php");
         die();
     }
 
-    if (!isset($_GET['blood']) && !isset($_GET["donors"]) && !isset($_GET["patients"]) && !isset($_GET["donations"]) && !isset($_GET["requests"]) && !isset($_GET["donations_history"]) && !isset($_GET["requests_history"]) && !isset($_GET["logout"])) {
+    if (!isset($_GET['profile']) && !isset($_GET['stock']) && !isset($_GET["donors"]) && !isset($_GET["patients"]) && !isset($_GET["donations"]) && !isset($_GET["requests"]) && !isset($_GET["donations_history"]) && !isset($_GET["requests_history"]) && !isset($_GET["logout"])) {
         // Redirect to the same page with the 'blood' parameter added
-        header('Location:dashboard.php?blood=1');
+        header('Location:dashboard.php?stock=1');
     }
 
     if (isset($_GET["logout"])) {
@@ -100,7 +101,7 @@
         }
     }
         @media (max-width: 991px) {
-            .navbar-nav.mr-auto {
+            .navbar-nav.ml-auto {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -117,13 +118,17 @@
     <!-- Bootstrap navigation bar with responsive button -->
     <div class="container" style="margin-bottom: 100px;">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shading" style="background-color:#b6ffb6;">
+    <a class="navbar-brand" href="../index.php" style="color: #fff;font-size:22px;text-shadow: 2px 2px 2px #66b2ff;letter-spacing:1px;font-weight:bold;">BBMS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="?blood=1" style="color:#333333; margin: 0 10px;">Home</a>
+                    <a class="nav-link" href="?stock=1" style="color:#333333; margin: 0 10px;">Stock</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="?profile=1" style="color:#333333; margin: 0 10px;">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="?donors=1" style="color: #333333; margin: 0 10px;">Donors</a>
@@ -178,8 +183,169 @@
             ';
         }
 
-        if (isset($_GET["blood"]))
+        function print_error(string $error)
         {
+            echo '<div style="text-align:center;color:#ff0000;" class="alert" role="alert">';
+            echo $error;
+            echo '</div>';
+        }
+
+        function check_profile_errors()
+        {
+            if(isset($_SESSION["admin_error_profile"]))
+            {
+                $errors = $_SESSION["admin_error_profile"];
+                foreach ($errors as $error) {
+                    print_error($error);
+                }
+                unset($_SESSION["admin_error_profile"]);
+            }
+        }
+
+        function print_details(array $row,string $type)
+        {
+            echo
+            '
+            <style>
+            .transparent-bg {
+                transition: background 0.3s, transform 0.3s;
+                border: 1px solid #fff;
+                border-radius:16px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            }
+            
+            .transparent-bg:hover {
+                transform: translateY(-5px); /* Scale up the card on hover */
+            }                       
+            </style>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> 
+                <div class="card" style="background:transparent;border:none;border-radius:16px;">
+                    <div class="card-body transparent-bg">
+            ';
+            echo '<b><p class="card-title">' . $row['username'] . '</p></b>';
+            echo '<p class="card-text">Id : ' . $row['id'] . '</p>';
+            echo '<p class="card-text">Name : ' . $row['name'] . '</p>';
+            echo '<p class="card-text">Email : ' . $row['email'] . '</p>';
+            echo '<p class="card-text">Blood Group : ' . $row['blood'] . '</p>';
+            echo '
+            <form method="post" action="delete.php">
+                <input type="hidden" name="id" value="' . $row['id'] . '">
+                <button class="btn" type="submit" name='.$type.'><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </form>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+        }
+
+        function requests_donations_details(array $row,string $path,string $name1,string $name2)
+        {
+            echo
+            '
+            <style>
+            .transparent-bg {
+                transition: background 0.3s, transform 0.3s;
+                border: 1px solid #fff;
+                border-radius:16px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            }
+            
+            .transparent-bg:hover {
+                transform: scale(1.05); /* Scale up the card on hover */
+            }                       
+            </style>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> 
+                <div class="card" style="background:transparent;border:none;border-radius:16px;">
+                    <div class="card-body transparent-bg">
+                        <b><p class="card-title">' . $row['username'] . '</p></b>
+                        <p class="card-text">'.$name1.' : ' . $row[$name2] . '</p>
+                        <p class="card-text">Blood Group : ' . $row['blood'] . '</p>
+                        <p class="card-text">Units : ' . $row['unit'] . '</p>
+                        <form method="post" action='.$path.'>
+                            <input type="hidden" name="id" value="' . $row['id'] . '">
+                            <button class="btn" type="submit" name="approve"><i class="fa fa-check" aria-hidden="true"></i></button>
+                            <button style="margin-left:20px;" class="btn" type="submit" name="reject"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            ';
+        }
+
+        function history(array $row,string $name1,string $name2,string $name3)
+        {
+            echo
+            '
+            <style>
+            .transparent-bg {
+                transition: background 0.3s, transform 0.3s;
+                border: 1px solid #fff;
+                border-radius:16px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            }
+            
+            .transparent-bg:hover {
+                transform: scale(1.05); /* Scale up the card on hover */
+            }                       
+            </style>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> 
+                <div class="card" style="background:transparent;border:none;border-radius:16px;">
+                    <div class="card-body transparent-bg">
+                        <b><p class="card-title">Id : ' . $row[$name1] . '</p></b>
+                        <p class="card-text">'.$name2.' : ' . $row[$name3] . '</p>
+                        <p class="card-text">Blood Group : ' . $row['blood'] . '</p>
+                        <p class="card-text">Units : ' . $row['unit'] . '</p>
+                        <b><p class="card-text">' . $row['status'] . '</p></b>
+                    </div>
+                </div>
+            </div>
+            ';
+        }
+
+        if(isset($_GET))
+        {
+            if(count($_GET) > 1)
+            {
+                print_error("Link Corrupted!! Correct the link.......");
+            }
+            else
+            {
+                $getOne = key($_GET);
+            }
+        }
+
+        if ($getOne && $getOne==='profile')
+        {
+
+            $val = reset($_GET);
+
+            if($val!=='1') 
+            {
+                print_error("Link Corrupted!! Correct the link.......");
+                die();
+            }
+
+            check_profile_errors();
+            
+            $query = "SELECT * from admin where username=:username;";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(":username",$_SESSION["admin"]);
+            $stmt->execute();
+            
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            profile_template($row);
+
+        }
+        else if ($getOne && $getOne==='stock')
+        {
+
+            $val = reset($_GET);
+
+            if($val!=='1') 
+            {
+                print_error("Link Corrupted!! Correct the link.......");
+                die();
+            }
 
             check_errors();
             
@@ -238,50 +404,16 @@
 
 
         }
-
-        function print_details(array $row,string $type)
+        else if ($getOne && $getOne==='donors')
         {
-            echo
-            '
-            <style>
-            .transparent-bg {
-                transition: background 0.3s, transform 0.3s;
-                border: 1px solid #fff;
-                border-radius:16px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+            $val = reset($_GET);
+
+            if($val!=='1') 
+            {
+                print_error("Link Corrupted!! Correct the link.......");
+                die();
             }
-            
-            .transparent-bg:hover {
-                transform: translateY(-5px); /* Scale up the card on hover */
-            }                       
-            </style>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> 
-                <div class="card" style="background:transparent;border:none;border-radius:16px;">
-                    <div class="card-body transparent-bg">
-            ';
-            echo '<b><p class="card-title">' . $row['username'] . '</p></b>';
-            echo '<p class="card-text">Id : ' . $row['id'] . '</p>';
-            echo '<p class="card-text">Name : ' . $row['name'] . '</p>';
-            echo '<p class="card-text">Email : ' . $row['email'] . '</p>';
-            echo '<p class="card-text">Blood Group : ' . $row['blood'] . '</p>';
-            echo '
-            <form method="post" action="delete.php">
-                <input type="hidden" name="id" value="' . $row['id'] . '">
-                <button class="btn" type="submit" name='.$type.'><i class="fa fa-trash" aria-hidden="true"></i></button>
-            </form>';
-            echo '</div>';
-            echo '</div>';
-            echo '</div>';
-        }
-
-        function print_error(string $error)
-        {
-            echo '<div style="text-align:center;color:#ff0000;" class="alert" role="alert">';
-            echo $error;
-            echo '</div>';
-        }
-
-        if (isset($_GET["donors"])) {
             
             $query = "SELECT * from donor;";
             $stmt = $pdo->prepare($query);
@@ -308,9 +440,17 @@
             $pdo = null;
             
         }
+        else if ($getOne && $getOne==='patients')
+        {
 
-        if (isset($_GET["patients"])) {
-            // Unset session variable
+            $val = reset($_GET);
+
+            if($val!=='1') 
+            {
+                print_error("Link Corrupted!! Correct the link.......");
+                die();
+            }
+
             $query = "SELECT * from patient;";
             $stmt = $pdo->prepare($query);
             $stmt->execute();
@@ -334,42 +474,17 @@
             // Close the PDO connection
             $pdo = null;
         }
-
-        function requests_donations_details(array $row,string $path,string $name1,string $name2)
+        else if ($getOne && $getOne==='requests')
         {
-            echo
-            '
-            <style>
-            .transparent-bg {
-                transition: background 0.3s, transform 0.3s;
-                border: 1px solid #fff;
-                border-radius:16px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            }
-            
-            .transparent-bg:hover {
-                transform: scale(1.05); /* Scale up the card on hover */
-            }                       
-            </style>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> 
-                <div class="card" style="background:transparent;border:none;border-radius:16px;">
-                    <div class="card-body transparent-bg">
-                        <b><p class="card-title">' . $row['username'] . '</p></b>
-                        <p class="card-text">'.$name1.' : ' . $row[$name2] . '</p>
-                        <p class="card-text">Blood Group : ' . $row['blood'] . '</p>
-                        <p class="card-text">Units : ' . $row['unit'] . '</p>
-                        <form method="post" action='.$path.'>
-                            <input type="hidden" name="id" value="' . $row['id'] . '">
-                            <button class="btn" type="submit" name="approve"><i class="fa fa-check" aria-hidden="true"></i></button>
-                            <button style="margin-left:20px;" class="btn" type="submit" name="reject"><i class="fa fa-times" aria-hidden="true"></i></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            ';
-        }
 
-        if (isset($_GET["requests"])) {
+            $val = reset($_GET);
+
+            if($val!=='1') 
+            {
+                print_error("Link Corrupted!! Correct the link.......");
+                die();
+            }
+
             $status = "pending";
             $query = "SELECT * from request where status=:status;";
             $stmt = $pdo->prepare($query);
@@ -397,8 +512,17 @@
             $pdo = null;
             
         }
+        else if ($getOne && $getOne==='donations')
+        {
 
-        if (isset($_GET["donations"])) {
+            $val = reset($_GET);
+
+            if($val!=='1') 
+            {
+                print_error("Link Corrupted!! Correct the link.......");
+                die();
+            }
+
             $status = "pending";
             $query = "SELECT * from donate where status=:status;";
             $stmt = $pdo->prepare($query);
@@ -426,38 +550,17 @@
             // Close the PDO connection
             $pdo = null;
         }
-
-        function history(array $row,string $name1,string $name2,string $name3)
+        else if ($getOne && $getOne==='requests_history')
         {
-            echo
-            '
-            <style>
-            .transparent-bg {
-                transition: background 0.3s, transform 0.3s;
-                border: 1px solid #fff;
-                border-radius:16px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            }
-            
-            .transparent-bg:hover {
-                transform: scale(1.05); /* Scale up the card on hover */
-            }                       
-            </style>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> 
-                <div class="card" style="background:transparent;border:none;border-radius:16px;">
-                    <div class="card-body transparent-bg">
-                        <b><p class="card-title">Id : ' . $row[$name1] . '</p></b>
-                        <p class="card-text">'.$name2.' : ' . $row[$name3] . '</p>
-                        <p class="card-text">Blood Group : ' . $row['blood'] . '</p>
-                        <p class="card-text">Units : ' . $row['unit'] . '</p>
-                        <b><p class="card-text">' . $row['status'] . '</p></b>
-                    </div>
-                </div>
-            </div>
-            ';
-        }
 
-        if (isset($_GET["requests_history"])) {
+            $val = reset($_GET);
+
+            if($val!=='1') 
+            {
+                print_error("Link Corrupted!! Correct the link.......");
+                die();
+            }
+
             $status = "pending";
             $query = "SELECT * from request where status!=:status;";
             $stmt = $pdo->prepare($query);
@@ -485,9 +588,17 @@
             $pdo = null;
             
         }
+        else if ($getOne && $getOne==='donations_history')
+        {
 
+            $val = reset($_GET);
 
-        if (isset($_GET["donations_history"])) {
+            if($val!=='1') 
+            {
+                print_error("Link Corrupted!! Correct the link.......");
+                die();
+            }
+
             $status = "pending";
             $query = "SELECT * from donate where status!=:status;";
             $stmt = $pdo->prepare($query);

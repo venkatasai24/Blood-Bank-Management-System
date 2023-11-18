@@ -68,7 +68,6 @@
                 <div class="form-container">
                     <div class="d-flex justify-content-between">
                         <h2 class="text-center">' . $name . '</h2>
-                        <a href="../index.php" class="btn"><i style="font-size:25px;" class="fa fa-home"></i></a>
                     </div>
                     <form action="login.inc.php" method="post">
                         <div class="form-group">
@@ -161,7 +160,6 @@
                 <div class="form-container">
                     <div class="d-flex justify-content-between">
                         <h2 class="text-center">' . $name . '</h2>
-                        <a href="../index.php" class="btn"><i style="font-size:25px;" class="fa fa-home"></i></a>
                     </div>
                     <form action="register.inc.php" method="post">
                         <div class="form-group">
@@ -225,7 +223,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 offset-md-4">
-                    <div class="form-container">
+                    <div class="form-container p-3" style="border: 2px solid #b6ffb6;border-radius:10px;">
                     <h2 class="text-center">Profile</h2>
                     <form action="update_delete.php" method="post">
                         <div class="form-group">
@@ -234,7 +232,7 @@
                         </div>
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" name="name" value='.$row['name'].'>
+                            <input type="text" class="form-control" name="name" value="'.$row['name'].'">
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
@@ -242,13 +240,16 @@
                         </div>
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control" name="username" value='.$row['username'].'>
-                        </div>
-                        <div class="form-group">
-                            <label for="bloodgroup">Blood Group</label>
-                            <input type="text" class="form-control" name="blood" value='.$row['blood'].' readonly>
-                        </div>
-                        <div class="text-center"> <!-- Center the buttons -->
+                            <input type="text" class="form-control" name="username" value="'.$row['username'].'">
+                        </div>';
+                        if(count($row)==6)
+                        {
+                            echo '<div class="form-group">
+                                <label for="bloodgroup">Blood Group</label>
+                                <input type="text" class="form-control" name="blood" value='.$row['blood'].' readonly>
+                            </div>';
+                        }
+                        echo '<div class="text-center"> <!-- Center the buttons -->
                             <button type="submit"  name="update" class="btn btn-primary">Update</button>
                             <button type="submit" name="delete" class="btn btn-danger">Delete</button>
                         </div>
@@ -267,7 +268,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 offset-md-4">
-                    <div class="form-container">
+                    <div class="form-container p-3" style="border: 2px solid #b6ffb6;border-radius:10px;">
                     <h2 class="text-center">'.$name.'</h2>
                     <form action='.$path.' method="post">
                         <div class="form-group">

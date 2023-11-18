@@ -102,7 +102,7 @@
         }
 
         @media (max-width: 991px) {
-            .navbar-nav.mr-auto {
+            .navbar-nav.ml-auto {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -120,11 +120,12 @@
     <div class="container" style="margin-bottom: 100px;">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shading" style="background-color:#b6ffb6;">
     <!-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#FF0000;"> -->
+    <a class="navbar-brand" href="../index.php" style="color: #fff;font-size:22px;text-shadow: 2px 2px 2px #66b2ff;letter-spacing:1px;font-weight:bold;">BBMS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="dashboard.php" style="color:#333333; margin: 0 10px;">Home</a>
                 </li>
@@ -138,8 +139,28 @@
 
     <?php
 
-        if(isset($_GET['home']))
+        if(isset($_GET))
         {
+            if(count($_GET) > 1)
+            {
+                print_error("Link Corrupted!! Correct the link.......");
+            }
+            else
+            {
+                $getOne = key($_GET);
+            }
+        }
+        
+        if ($getOne && $getOne==='home')
+        {
+
+            $val = reset($_GET);
+
+            if($val!=='1') 
+            {
+                print_error("Link Corrupted!! Correct the link.......");
+                die();
+            }
             
             $input = [
                 "Donor",
@@ -154,9 +175,17 @@
             home_template($input);
 
         }
-        
-        if(isset($_GET['profile']))
+        else if ($getOne && $getOne==='profile')
         {
+
+            $val = reset($_GET);
+
+            if($val!=='1') 
+            {
+                print_error("Link Corrupted!! Correct the link.......");
+                die();
+            }
+
             check_profile_errors();
 
             $query = "SELECT * from donor where username=:username;";
@@ -168,18 +197,33 @@
 
             profile_template($row);
         }
-    
-        if(isset($_GET["donate_blood"]))
+        else if ($getOne && $getOne==='donate_blood')
         {
+
+            $val = reset($_GET);
+
+            if($val!=='1') 
+            {
+                print_error("Link Corrupted!! Correct the link.......");
+                die();
+            }
 
             check_errors();
 
             donate_request_template("donate.php","Donate Blood","Disease","disease","Donate");
 
         }
-
-        if(isset($_GET['donations_history']))
+        else if ($getOne && $getOne==='donations_history')
         {
+
+            $val = reset($_GET);
+
+            if($val!=='1') 
+            {
+                print_error("Link Corrupted!! Correct the link.......");
+                die();
+            }
+
             $query = "SELECT id from donor where username=:current_username;";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(":current_username", $_SESSION['donor']);

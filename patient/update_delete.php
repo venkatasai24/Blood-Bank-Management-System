@@ -64,11 +64,6 @@
                 $stmt = $pdo->prepare($query);
                 $stmt->bindParam(":id",$patient_id);
                 $stmt->execute();
-
-                $query = "DELETE from request where patient_id=:id;";
-                $stmt = $pdo->prepare($query);
-                $stmt->bindParam(":id",$id);
-                $stmt->execute();
                 
                 header('Location:dashboard.php?logout=1');
             }
