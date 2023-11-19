@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 13, 2023 at 06:28 PM
+-- Generation Time: Nov 19, 2023 at 04:10 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -40,7 +40,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `username`, `email`, `pwd`) VALUES
-(1, 'doctor', 'doctor', 'doctor@gmail.com', '$2y$10$KMA/31/rNdILcmMWvROqVO1mk4kAE0jvw8HrWUCMEW1xVgaoYtBZi');
+(2, 'doctor', 'doctor', 'doctor@gmail.com', '$2y$10$8AcRbtS8.dla0Jvtg1KJGOUn3dRSOvHmPG387azTsF41FX5kw5yXO'),
+(3, 'ajf', '123', 'doctor123@gmail.com', 'ajhdFIQEV986(d^*ir^f');
 
 -- --------------------------------------------------------
 
@@ -65,7 +66,7 @@ CREATE TABLE `blood` (
 --
 
 INSERT INTO `blood` (`id`, `AP`, `AN`, `BP`, `BN`, `ABP`, `ABN`, `OP`, `ON`) VALUES
-(1, 0, 2, 3, 4, 5, 2, 7, 4);
+(1, 0, 0, 1, 5, 6, 2, 7, 4);
 
 -- --------------------------------------------------------
 
@@ -88,8 +89,7 @@ CREATE TABLE `donate` (
 --
 
 INSERT INTO `donate` (`id`, `donor_id`, `username`, `disease`, `blood`, `unit`, `status`) VALUES
-(4, 4, 'tester', 'asdaef', 'AB+', 3, 'approved'),
-(5, 4, 'tester', 'sdgg', 'AB+', 2, 'approved');
+(1, 5, 'venkatasai24', 'nothing', 'B-', 1, 'approved');
 
 -- --------------------------------------------------------
 
@@ -111,7 +111,7 @@ CREATE TABLE `donor` (
 --
 
 INSERT INTO `donor` (`id`, `name`, `username`, `email`, `pwd`, `blood`) VALUES
-(4, 'tester', 'tester', 'tester@gmail.com', '$2y$10$GmEZ9574xLwBHLs0pKl8MuhLBRSetQU7VfaV/tO26F4TxsjyeaxlC', 'AB+');
+(5, 'Vedurupaka Venkata Sai', 'venkatasai24', 'venkatasai24042004@gmail.com', '$2y$10$Kd5ykwrCfU6VIoS/0M5uEey9LgE8331ff8nwAYMnKHk2VLD678OD.', 'B-');
 
 -- --------------------------------------------------------
 
@@ -133,7 +133,7 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`id`, `name`, `username`, `email`, `pwd`, `blood`) VALUES
-(7, 'tester', 'tester', 'tester@gmail.com', '$2y$10$v39CpZRtkDUewu4KMHD0YeKYEXx0yJPlwovAub6PauJryTHcgcNQS', 'A-');
+(12, 'Vedurupaka Venkata Sai', 'venkatasai24', 'venkatasai24042004@gmail.com', '$2y$10$CKRsoSpPcEk7kGBNVNP7xuND9FhVLqLDdkEGCxkqO3uoghC5zz9Ha', 'B+');
 
 -- --------------------------------------------------------
 
@@ -156,15 +156,7 @@ CREATE TABLE `request` (
 --
 
 INSERT INTO `request` (`id`, `patient_id`, `username`, `reason`, `blood`, `unit`, `status`) VALUES
-(1, 7, 'test', 'adasd', 'A-', 1, 'approved'),
-(2, 7, 'tester2', 'adasd', 'A-', 5, 'rejected due to insufficient blood stock of A- '),
-(3, 7, 'tester', 'hhghg', 'A-', 6, 'approved'),
-(4, 7, 'tester', 'fsgb', 'A-', 5, 'rejected due to insufficient blood stock of A-'),
-(6, 7, 'tester', 'dfndfjs', 'A-', 2, 'approved'),
-(7, 7, 'tester', 'gdh', 'A-', 4, 'rejected due to insufficient blood stock of A-'),
-(8, 7, 'tester', 'dfabgr', 'A-', 3, 'rejected due to insufficient blood stock of A-'),
-(9, 7, 'tester', 'asgwh', 'A-', 6, 'rejected'),
-(10, 7, 'tester', 'asfasg', 'A-', 1, 'rejected');
+(1, 12, 'venkatasai24', 'low blood levels', 'B+', 2, 'approved');
 
 --
 -- Indexes for dumped tables
@@ -186,7 +178,8 @@ ALTER TABLE `blood`
 -- Indexes for table `donate`
 --
 ALTER TABLE `donate`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_donate_donor` (`donor_id`);
 
 --
 -- Indexes for table `donor`
@@ -204,7 +197,8 @@ ALTER TABLE `patient`
 -- Indexes for table `request`
 --
 ALTER TABLE `request`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_request_patient` (`patient_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -214,7 +208,7 @@ ALTER TABLE `request`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `blood`
@@ -226,25 +220,41 @@ ALTER TABLE `blood`
 -- AUTO_INCREMENT for table `donate`
 --
 ALTER TABLE `donate`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `donor`
 --
 ALTER TABLE `donor`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `request`
 --
 ALTER TABLE `request`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `donate`
+--
+ALTER TABLE `donate`
+  ADD CONSTRAINT `fk_donate_donor` FOREIGN KEY (`donor_id`) REFERENCES `donor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `request`
+--
+ALTER TABLE `request`
+  ADD CONSTRAINT `fk_request_patient` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
