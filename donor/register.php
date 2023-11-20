@@ -14,9 +14,13 @@
             $errors = $_SESSION["donor_error_register"];
             echo "<br>";
             foreach ($errors as $error) {
-                echo '<div class="alert alert-light" style="color:#ff0000;" role="alert">';
+                echo '<div class="alert alert-danger alert-dismissible fade show text-center mx-auto" role="alert" style="width: fit-content;">';
                 echo $error;
-                echo '</div>';
+                echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close" style="background:none;">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                ';
             }
             unset($_SESSION["donor_error_register"]);
         }

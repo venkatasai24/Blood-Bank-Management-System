@@ -29,9 +29,7 @@
         {
             $errors = $_SESSION["admin_error_update"];
             foreach ($errors as $error) {
-                echo '<div style="text-align:center;color:#ff0000;" class="alert" role="alert">';
-                echo $error;
-                echo '</div>';
+                print_error($error);
             }
             unset($_SESSION["admin_error_update"]);
         }
@@ -185,9 +183,13 @@
 
         function print_error(string $error)
         {
-            echo '<div style="text-align:center;color:#ff0000;" class="alert" role="alert">';
+            echo '<div class="alert alert-danger alert-dismissible fade show text-center mx-auto" role="alert" style="width: fit-content;">';
             echo $error;
-            echo '</div>';
+            echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            ';
         }
 
         function check_profile_errors()
@@ -339,6 +341,19 @@
         else if ($getOne && $getOne==='stock')
         {
 
+            if (!isset($_SESSION["welcome_admin_message"])) {
+                // Display the welcome message
+                echo '<div class="alert alert-success alert-dismissible fade show text-center mx-auto" role="alert" style="width: fit-content;">
+                        Welcome, ' . $_SESSION["admin"]. '
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>';
+    
+                // Set a session variable to indicate that the welcome message has been displayed
+                $_SESSION["welcome_admin_message"]=true;
+            }
+            
             $val = reset($_GET);
 
             if($val!=='1') 

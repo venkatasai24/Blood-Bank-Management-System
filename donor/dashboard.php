@@ -24,9 +24,13 @@
 
     function print_error(string $error)
     {
-        echo '<div style="text-align:center;color:#ff0000;" class="alert" role="alert">';
+        echo '<div class="alert alert-danger alert-dismissible fade show text-center mx-auto" role="alert" style="width: fit-content;">';
         echo $error;
-        echo '</div>';
+        echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        ';
     }
 
     function check_errors()
@@ -154,6 +158,19 @@
         if ($getOne && $getOne==='home')
         {
 
+            if (!isset($_SESSION["welcome_donor_message"])) {
+                // Display the welcome message
+                echo '<div class="alert alert-success alert-dismissible fade show text-center mx-auto" role="alert" style="width: fit-content;">
+                        Welcome, ' . $_SESSION["donor"]. '
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>';
+    
+                // Set a session variable to indicate that the welcome message has been displayed
+                $_SESSION["welcome_donor_message"]=true;
+            }
+            
             $val = reset($_GET);
 
             if($val!=='1') 
