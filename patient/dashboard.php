@@ -24,9 +24,13 @@
 
     function print_error(string $error)
     {
-        echo '<div style="text-align:center;color:#ff0000;" class="alert" role="alert">';
+        echo '<div class="alert alert-danger alert-dismissible fade show text-center mx-auto" role="alert" style="width: fit-content;">';
         echo $error;
-        echo '</div>';
+        echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        ';
     }
 
     function check_errors()
@@ -75,56 +79,106 @@
         body {
             background: linear-gradient(45deg, #b6ffb6, #66b2ff);
         }
-        @media (min-width: 576px) {
+
         .navbar-nav .nav-item a {
-            color:#333333;
-            transition: transform 0.3s; /* Smooth transition effect for scale */
+            position: relative;
+            color: #333333;
+            text-decoration: none;
+            overflow: hidden;
         }
-    
-        .navbar-nav .nav-item a:hover {
-            transform: scale(1.25); /* Increase font size on hover */
+
+        /* Create a pseudo-element for the border effect */
+        .navbar-nav .nav-item a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #66b2ff;
+            transform: translateX(-50%); /* Center the pseudo-element */
+            transition: width 0.3s; /* Smooth transition effect for width */
         }
-    }
+
+        /* On hover, extend the width to both sides */
+        .navbar-nav .nav-item a:hover::before {
+            width: 100%;
+        }
+
+        @media (max-width: 991px) {
+            .navbar-nav.ml-auto {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-grow: 1;
+            }
+        }
+
+        .navbar-shading {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Add a subtle box shadow for a lighting effect */
+        }
     </style>
 </head>
 <body>
     <!-- Bootstrap navigation bar with responsive button -->
     <div class="container" style="margin-bottom: 100px;">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#b6ffb6;">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shading" style="background-color:#b6ffb6;">
     <!-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#FF0000;"> -->
+    <a class="navbar-brand" href="../index.php" style="color: #fff;font-size:22px;text-shadow: 2px 2px 2px #66b2ff;letter-spacing:1px;font-weight:bold;">BBMS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="?home=1" style="color:#333333; margin: 0 10px;">Home</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="?profile=1" style="color:#333333; margin: 0 10px;">Profile</a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="?request_blood=1" style="color:#333333; margin: 0 10px;">Request Blood</a>
+                    <a class="nav-link" href="?logout=1" style="color:#333333;margin: 0 10px;">Logout</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="?requests_history=1" style="color:#333333; margin: 0 10px;">Request History</a>
-                </li> -->
             </ul>
-            <div class="ml-auto">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="?logout=1" style="color:#333333;margin: 0 10px;">Logout</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
     </div>
 
     <?php
 
-        if(isset($_GET['home']))
+        if(isset($_GET))
         {
+            if(count($_GET) > 1)
+            {
+                print_error("Link Corrupted!! Correct the link.......");
+            }
+            else
+            {
+                $getOne = key($_GET);
+            }
+        }
+        
+        if ($getOne && $getOne==='home')
+        {
+
+            if (!isset($_SESSION["welcome_patient_message"])) {
+                // Display the welcome message
+                echo '<div class="alert alert-success alert-dismissible fade show text-center mx-auto" role="alert" style="width: fit-content;">
+                        Welcome, ' . $_SESSION["patient"]. '
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>';
+    
+                // Set a session variable to indicate that the welcome message has been displayed
+                $_SESSION["welcome_patient_message"]=true;
+            }
+            
+            $val = reset($_GET);
+
+            if($val!=='1') 
+            {
+                print_error("Link Corrupted!! Correct the link.......");
+                die();
+            }
+
             $input = [
                 "Patient",
                 "Request",
@@ -138,9 +192,17 @@
             home_template($input);
             
         }
-        
-        if(isset($_GET['profile']))
+        else if ($getOne && $getOne==='profile')
         {
+
+            $val = reset($_GET);
+
+            if($val!=='1') 
+            {
+                print_error("Link Corrupted!! Correct the link.......");
+                die();
+            }
+
             check_profile_errors();
 
             $query = "SELECT * from patient where username=:username;";
@@ -153,18 +215,33 @@
             profile_template($row);
 
         }
-    
-        if(isset($_GET["request_blood"]))
+        else if ($getOne && $getOne==='request_blood')
         {
+
+            $val = reset($_GET);
+
+            if($val!=='1') 
+            {
+                print_error("Link Corrupted!! Correct the link.......");
+                die();
+            }
 
             check_errors();
 
             donate_request_template("request.php","Request Blood","Reason","reason","Request");
 
         }
-
-        if(isset($_GET['requests_history']))
+        else if ($getOne && $getOne==='requests_history')
         {
+
+            $val = reset($_GET);
+
+            if($val!=='1') 
+            {
+                print_error("Link Corrupted!! Correct the link.......");
+                die();
+            }
+
             $query = "SELECT id from patient where username=:current_username;";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(":current_username", $_SESSION['patient']);

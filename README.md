@@ -7,8 +7,8 @@ Blood Bank Management System (BBMS) is a web-based application designed to effic
 ## Table Of Contents
 
 - [Prerequisites](#prerequisites)
+- [Deployment](#deployment)
 - [Installation](#installation)
-- [Admin Panel](#admin-panel)
 - [Usage](#usage)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
@@ -22,6 +22,11 @@ Before you begin, ensure you have met the following requirements:
 - **XAMPP**: You need XAMPP installed for hosting the application in your Linux environment.XAMPP includes Apache, MySQL, PHP, and phpMyAdmin, which are essential for running the application.
 
 For a detailed guide on how to install XAMPP on linux, you can watch this [video](https://www.youtube.com/watch?v=XoKUkdmfTZQ).
+
+## Deployment
+
+For a detailed guide on how to deploy a PHP and MYSQL application on internet, you can watch this [video](https://youtu.be/IbUmbYKY_Q4?si=1Od8XSaNmLZ8CRiY).
+
 
 ## Installation
 
@@ -43,30 +48,6 @@ To set up the BBMS application with XAMPP in your Linux environment, follow thes
    ```bash
    http://localhost/BBMS/index.php
    ```
-
-## Admin Panel
-
-To get the admin credentials, follow these steps:
-
-1. Navigate to the directory where the `generate_credentials.sh` script is located
-   ```bash
-   cd /opt/lampp/htdocs/BBMS
-   ```
-2. Make the script executable using the chmod command
-   ```bash
-   chmod +x generate_credentials.sh
-   ```
-3. Run the script
-   ```bash
-   ./generate_credentials.sh
-   ```
-4. The script will execute and display the admin credentials. It might look something like this
-   ```bash
-   Credentials generated and injected into .env
-   Username: superuser
-   Password: your_secure_password
-   ```
-   Using these credentials, you can login to the admin panel and manage all the donors, patients, requests and donations.
 
 ## Usage
 
@@ -109,4 +90,7 @@ Contributions are always welcome! If you'd like to contribute to the project, pl
 ## License
 
 This project is licensed under the [MIT License](https://github.com/venkatasai24/BBMS/blob/main/LICENSE).
+
+
+
 
