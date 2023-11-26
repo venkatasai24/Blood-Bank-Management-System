@@ -81,11 +81,12 @@
                                 <input type="password" class="form-control" name="pwd" required>
                                 <label>Password</label>
                             </div>
-                        </div>
-                        <button type="submit">Login</button>
-                    </form>
-                    <p class="mt-3">Dont have an account? <a href="register.php">Register here</a></p>
-                </div>
+                        </div>';
+                        echo
+                        '<button type="submit">Login</button>
+                    </form>';
+                    if($name !== 'Admin Login' ) echo '<p class="mt-3">Dont have an account? <a href="register.php">Register here</a></p>';
+                echo '</div>
             </div>
         </div>
         ';
@@ -209,9 +210,9 @@
                         echo
                         '<!-- Add more registration fields as needed -->
                         <button type="submit">Register</button>
-                    </form>
-                    <p class="mt-3">Already have an account? <a href="login.php">Login here</a></p>
-                </div>
+                    </form>';
+                    if($name !== 'Admin Register' ) echo '<p class="mt-3">Already have an account? <a href="login.php">Login here</a></p>';
+                echo '</div>
             </div>
         </div>
         ';
