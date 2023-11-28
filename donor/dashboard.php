@@ -76,65 +76,39 @@
             padding: 0;
         }
 
-        body {
-            background: linear-gradient(45deg, #b6ffb6, #66b2ff);
-        }
-
         .navbar-nav .nav-item a {
             position: relative;
-            color: #333333;
+            color: #777;
+            text-transform: uppercase;
+            margin-right: 10px;
             text-decoration: none;
             overflow: hidden;
         }
 
-        /* Create a pseudo-element for the border effect */
-        .navbar-nav .nav-item a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background-color: #66b2ff;
-            transform: translateX(-50%); /* Center the pseudo-element */
-            transition: width 0.3s; /* Smooth transition effect for width */
-        }
-
-        /* On hover, extend the width to both sides */
-        .navbar-nav .nav-item a:hover::before {
-            width: 100%;
-        }
-
-        @media (max-width: 991px) {
-            .navbar-nav.ml-auto {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-grow: 1;
-            }
-        }
-
-        .navbar-shading {
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Add a subtle box shadow for a lighting effect */
+        .navbar-nav  li a:hover {
+            color: #1abc9c !important;
         }
     </style>
 </head>
 <body>
     <!-- Bootstrap navigation bar with responsive button -->
     <div class="container" style="margin-bottom: 100px;">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shading" style="background-color:#b6ffb6;">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shading" style="background-color:#f8f8f8;">
     <!-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#FF0000;"> -->
-    <a class="navbar-brand" href="../index.php" style="color: #fff;font-size:22px;text-shadow: 2px 2px 2px #66b2ff;letter-spacing:1px;font-weight:bold;">BBMS</a>
+    <a class="navbar-brand" href="../index.php" style="color: #777;font-size:22px;letter-spacing:2px;">BBMS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard.php" style="color:#333333; margin: 0 10px;">Home</a>
+                    <a class="nav-link" href="?home=1">Home</a>
+                </li>                                       
+                <li class="nav-item">
+                    <a class="nav-link" href="?profile=1">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="?logout=1" style="color:#333333;margin: 0 10px;">Logout</a>
+                    <a class="nav-link" href="?logout=1">Logout</a>
                 </li>
             </ul>
         </div>
