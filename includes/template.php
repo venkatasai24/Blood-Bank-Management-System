@@ -65,7 +65,7 @@
                             </div>
                         </div>';
                         echo
-                        '<button class="btn btn-primary" type="submit">Login</button>
+                        '<button class="btn" type="submit" style="color:#fff;background-color:#1abc9c;">Login</button>
                     </form>';
                     if($name !== 'Admin Login' ) echo '<p class="mt-3">Dont have an account? <a href="register.php">Register here</a></p>';
                 echo '</div>
@@ -173,7 +173,7 @@
 
                         echo
                         '<!-- Add more registration fields as needed -->
-                        <button class="btn btn-primary" type="submit">Register</button>
+                        <button class="btn" type="submit" style="color:#fff;background-color:#1abc9c;">Register</button>
                     </form>';
                     if($name !== 'Admin Register' ) echo '<p class="mt-3">Already have an account? <a href="login.php">Login here</a></p>';
                 echo '</div>
@@ -215,8 +215,8 @@
                             </div>';
                         }
                         echo '<div class="text-center"> <!-- Center the buttons -->
-                            <button type="submit"  name="update" class="btn btn-warning">Update</button>
-                            <button type="submit" name="delete" class="btn btn-danger">Delete</button>
+                            <button type="submit"  name="update" class="btn" style="color:#fff;background-color:#107dac;">Update</button>
+                            <button type="submit" name="delete" class="btn" style="color:#fff;background-color:#a91b0d;">Delete</button>
                         </div>
                     </form>
                     </div>
@@ -245,7 +245,7 @@
                             <input type="number" id="units" name="unit" class="form-control">
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-info">'.$name3.'</button>
+                            <button type="submit" class="btn" style="color:#fff;background-color:#1abc9c;">'.$name3.'</button>
                         </div>
                     </form>
                     </div>
@@ -298,6 +298,11 @@
                 .transparent-bg:hover {
                     transform: translateY(-5px);
                 }
+
+                .card-body a , .card-body a:hover {
+                    color:#fff;
+                    background-color:#1abc9c;
+                }
             </style>
             <div class="container mt-5">
                 <h2 class="text-center mb-4">' . $name[0] . ' Dashboard</h2>
@@ -312,7 +317,7 @@
                                     <div class="card-body transparent-bg">
                                         <h5 class="card-title">' . $name[1] . ' Blood</h5>
                                         <p class="card-text">' . $name[2] . '</p>
-                                        <a href="?' . $name[3] . '_blood=1" class="btn btn-secondary btn-action">' . $name[1] . ' Blood</a>
+                                        <a href="?' . $name[3] . '_blood=1" class="btn">' . $name[1] . ' Blood</a>
                                     </div>
                                 </div>
                             </div>
@@ -321,7 +326,7 @@
                                     <div class="card-body transparent-bg">
                                         <h5 class="card-title">' . $name[4] . ' History</h5>
                                         <p class="card-text">' . $name[5] . '</p>
-                                        <a href="?' . $name[6] . '_history=1" class="btn btn-secondary btn-action">' . $name[4] . ' History</a>
+                                        <a href="?' . $name[6] . '_history=1" class="btn">' . $name[4] . ' History</a>
                                     </div>
                                 </div>
                             </div>

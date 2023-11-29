@@ -57,7 +57,7 @@
             padding: 0;
         }
 
-        .navbar-nav .nav-item a {
+        .navbar-nav .nav-item a , .dropdown a {
             position: relative;
             color: #777;
             text-transform: uppercase;
@@ -68,6 +68,10 @@
 
         .navbar-nav  li a:hover {
             color: #1abc9c !important;
+        }
+
+        .dropdown-menu , .dropdown-menu a:hover {
+            background-color: #f8f88f; /* Change the color to match your navbar background */
         }
         #animated-image {
         height:25px;
@@ -99,9 +103,6 @@
                     <a class="nav-link" href="?stock=1">Stock</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="?profile=1">Profile</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="?donors=1">Donors</a>
                 </li>
                 <li class="nav-item">
@@ -119,8 +120,25 @@
                 <li class="nav-item">
                     <a class="nav-link" href="?requests_history=1">Requests History</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="?logout=1">Logout</a>
+                <li>
+                    <?php
+                    echo 
+                    '
+                    <div class="dropdown">
+                        <a class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left:0px;">
+                            '.$_SESSION['admin'].'
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <a class="dropdown-item" href="?profile=1">Profile</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="?logout=1">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                    ';
+                    ?>
                 </li>
             </ul>
         </div>
@@ -378,7 +396,7 @@
                                     <input type="number" name="unit" class="form-control mt-2" placeholder="Quantity">
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-secondary" name="button">Update</button>
+                                    <button type="submit" class="btn" name="button" style="color:#fff;background-color:#1abc9c;">Update</button>
                                 </div>
                             </form>
                             </div>

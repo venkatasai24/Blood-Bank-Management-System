@@ -76,7 +76,7 @@
             padding: 0;
         }
 
-        .navbar-nav .nav-item a {
+        .navbar-nav .nav-item a , .dropdown button {
             position: relative;
             color: #777;
             text-transform: uppercase;
@@ -85,7 +85,11 @@
             overflow: hidden;
         }
 
-        .navbar-nav  li a:hover {
+        .dropdown-menu , .dropdown-menu a:hover {
+            background-color: #f8f88f; /* Change the color to match your navbar background */
+        }
+
+        .navbar-nav  li a:hover , .dropdown button:hover {
             color: #1abc9c !important;
         }
     </style>
@@ -103,12 +107,26 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="?home=1">Home</a>
-                </li>                                       
-                <li class="nav-item">
-                    <a class="nav-link" href="?profile=1">Profile</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="?logout=1">Logout</a>
+                <li>
+                    <?php
+                    echo 
+                    '
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left:0px;">
+                            '.$_SESSION['donor'].'
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <a class="dropdown-item" href="?profile=1">Profile</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="?logout=1">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                    ';
+                    ?>
                 </li>
             </ul>
         </div>
