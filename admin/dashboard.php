@@ -88,7 +88,7 @@
 <body>
     <!-- Bootstrap navigation bar with responsive button -->
     <div class="container" style="margin-bottom: 100px;">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#f8f8f8;">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#f8f88f;">
     <a class="navbar-brand" href="../index.php" style="color: #777;font-size:22px;letter-spacing:2px;">BBMS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

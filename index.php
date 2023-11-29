@@ -32,7 +32,7 @@
 <body>
     <!-- Bootstrap navigation bar with responsive button -->
     <div class="container" style="margin-bottom: 50px;">
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#f8f8f8;">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#f8f88f;">
         <a class="navbar-brand" href="index.php" style="color: #777;font-size:22px;letter-spacing:2px;">BBMS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -79,6 +79,6 @@
 </body>
 <footer class="footer" style="background-color:#1abc9c; color: #FFF; padding: 15px; text-align: center; position: absolute; bottom: 0; width: 100%;">
     <!-- Add content for your footer here -->
-    &copy; <a style="color:#FFF;" href="https://github.com/venkatasai24">Venkatasai24</a> and Team ❤️. All rights reserved. 2023 
+    &copy; <a style="color:#FFF;" href="https://github.com/venkatasai24">Venkatasai24</a> and <a style="color:#FFF;" href="https://github.com/venkatasai24/Blood-Bank-Management-System">Team</a> ❤️. All rights reserved. 2023 
 </footer>
 </html>

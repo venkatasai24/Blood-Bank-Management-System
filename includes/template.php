@@ -237,11 +237,11 @@
                     <h2 class="text-center">'.$name.'</h2>
                     <form action='.$path.' method="post">
                         <div class="form-group">
-                            <label for='.$name2.'>'.$name1.':</label>
+                            <label for='.$name2.'>'.$name1.'</label>
                             <input type="text" id='.$name2.' name='.$name2.' class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="units">Units:</label>
+                            <label for="units">Units</label>
                             <input type="number" id="units" name="unit" class="form-control">
                         </div>
                         <div class="text-center">
