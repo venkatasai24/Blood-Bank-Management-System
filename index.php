@@ -29,7 +29,7 @@
     }
     </style>
 </head>
-<body>
+<body style="background-color: #f5f5dc;">
     <!-- Bootstrap navigation bar with responsive button -->
     <div class="container" style="margin-bottom: 50px;">
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#f8f88f;">
