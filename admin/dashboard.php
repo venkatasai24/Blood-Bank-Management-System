@@ -396,7 +396,7 @@
                                     <input type="number" name="unit" class="form-control mt-2" placeholder="Quantity">
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn" name="button" style="color:#fff;background-color:#1abc9c;">Update</button>
+                                    <button type="submit" class="btn" name="button" style="color:#fff;background-color:#0047ab;">Update</button>
                                 </div>
                             </form>
                             </div>

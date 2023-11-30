@@ -65,7 +65,7 @@
                             </div>
                         </div>';
                         echo
-                        '<button class="btn" type="submit" style="color:#fff;background-color:#1abc9c;">Login</button>
+                        '<button class="btn" type="submit" style="color:#fff;background-color:#0047ab;border:none;">Login</button>
                     </form>';
                     if($name !== 'Admin Login' ) echo '<p class="mt-3">Dont have an account? <a href="register.php">Register here</a></p>';
                 echo '</div>
@@ -173,7 +173,7 @@
 
                         echo
                         '<!-- Add more registration fields as needed -->
-                        <button class="btn" type="submit" style="color:#fff;background-color:#1abc9c;">Register</button>
+                        <button class="btn" type="submit" style="color:#fff;background-color:#0047ab;border:none;">Register</button>
                     </form>';
                     if($name !== 'Admin Register' ) echo '<p class="mt-3">Already have an account? <a href="login.php">Login here</a></p>';
                 echo '</div>
@@ -233,7 +233,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 offset-md-4">
-                    <div class="form-container p-3" style="border: 2px solid #1abc9c;border-radius:10px;">
+                    <div class="form-container p-3" style="border: 2px solid #1abc9c;border-radius:10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
                     <h2 class="text-center">'.$name.'</h2>
                     <form action='.$path.' method="post">
                         <div class="form-group">
@@ -245,7 +245,7 @@
                             <input type="number" id="units" name="unit" class="form-control">
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn" style="color:#fff;background-color:#1abc9c;">'.$name3.'</button>
+                            <button type="submit" class="btn" style="color:#fff;background-color:#0047ab;">'.$name3.'</button>
                         </div>
                     </form>
                     </div>
@@ -301,7 +301,7 @@
 
                 .card-body a , .card-body a:hover {
                     color:#fff;
-                    background-color:#1abc9c;
+                    background-color:#0047ab;
                 }
             </style>
             <div class="container mt-5">

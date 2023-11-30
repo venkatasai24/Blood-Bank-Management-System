@@ -50,34 +50,51 @@
         .form-container {
             border-radius: 10px;
             padding: 20px;
-            margin: 50px auto;
+            margin: 10px auto;
             max-width: 400px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        
-        .navbar-nav .nav-item a {
-            position: relative;
-            color: #777;
-            margin-right:10px;
-            text-transform: uppercase;
-            margin-right: 10px;
-            text-decoration: none;
-            overflow: hidden;
+        .active , .active:hover {
+            background-color: #1abc9c; /* Highlight color for the active button */
+            color:#fff;
         }
-
-        .navbar-nav  li a:hover {
-            color: #1abc9c !important;
+        .btn {
+            border: 1px #1ac9bc solid;
+            margin: 5px;
+        }
+        .custom-text-center {
+            padding: 10px;
+            max-width: 400px;
+            margin: auto;
+        }
+        @media (min-width: 576px) {
+            .text-center {
+                display: flex;
+                justify-content: center;
+            }
+            .btn {
+                flex: 1;
+            }
         }
     </style>
 </head>
 <body style="background-color: #f5f5dc;">
-    <div class="container" style="margin-top:50px;">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shading" style="background-color:#f8f88f;">
+    <div class="container" style="margin-top:80px;">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#f8f88f;">
         <a class="navbar-brand" href="../index.php" style="color: #777;font-size:22px;letter-spacing:2px;">BBMS</a>
     </nav>
         <?php 
             check_errors();
-            login_template("Admin Login");
         ?>
+        <div class="text-center custom-text-center">
+            <a class="btn" href="../patient/login.php">As Patient</a>
+            <a class="btn" href="../donor/login.php">As Donor</a>
+            <a class="btn active" href="../admin/login.php">As Admin</a>
+        </div>
+        <!-- Patient Register Form -->
+        <div style="display:block;">
+            <?php login_template("Admin Login"); ?>
+        </div>
     </div>
     <!-- Include Bootstrap JS and jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
