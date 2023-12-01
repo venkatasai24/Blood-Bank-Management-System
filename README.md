@@ -10,6 +10,7 @@ Blood Bank Management System (BBMS) is a web-based application designed to effic
 - [Deployment](#deployment)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Flowchart](#flowchart)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
@@ -56,6 +57,62 @@ To set up the BBMS application with XAMPP in your Linux environment, follow thes
 - **Donors**: Donors can view their profile , blood donations, and check their donation history.
 - **Admin**: Admins have access to user and donation management features.
 
+## Flowchart
+
+```mermaid
+graph TD
+    A[BBMS]
+
+  subgraph Login/Register
+  A1[Patient Login]
+  A3[Admin Login]
+  A2[Donor Login]
+  A1 --> |New to BBMS|A4[Patient Register]
+  A3 --> |New to BBMS|A6[Admin Register]
+  A2 --> |New to BBMS|A5[Donor Register]
+  end
+
+  subgraph Patient
+    A1 --> |Success| K[Patient Dashboard]
+    K --> L[View Profile]
+    L --> M[Update Profile]
+    L --> N[Delete Account]
+    K --> O[Request Blood]
+    K --> Q[Request History]
+    O --> |Submit Request| R[View Past Requests]
+    Q --> R
+  end
+
+  subgraph Admin
+    A3 --> |Success| E[Admin Dashboard]
+    E --> H[All blood types unit levels]
+    E --> |Manage|I[Patient/Donor Accounts]
+    E --> G[Requests/Donations]
+    E --> HI[View Past Donations/Requests]
+    G --> |Manages requests/donations|AR[Approve/Reject according to the request/donation data]
+    H --> |Update blood units| UB[Update Blood]
+  end
+
+  subgraph Donor
+    A2 --> |Success| T[Donor Dashboard]
+    T --> U[View Profile]
+    U --> V[Update Profile]
+    U --> W[Delete Account]
+    T --> X[Donate Blood]
+    T --> Z[Donation History]
+    X --> |Submit Donation| AA[View Past Donations]
+    Z --> AA
+  end
+
+
+  A --> A1
+  A --> A2
+  A --> A3
+  A4 --> K
+  A5 --> T
+  A6 --> E
+
+```
 ## Features
 
 - User authentication and role-based authorization for patients, donors, and admins.
@@ -90,6 +147,7 @@ Contributions are always welcome! If you'd like to contribute to the project, pl
 ## License
 
 This project is licensed under the [MIT License](https://github.com/venkatasai24/BBMS/blob/main/LICENSE).
+
 
 
 
