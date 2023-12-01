@@ -181,48 +181,72 @@
         </div>
         ';
     }
-    function profile_template(array $row)
+    function profile_template(array $row,string $role)
     {
         echo
         '
-        <div class="container">
+        <div class="container mb-5">
             <div class="row">
-                <div class="col-md-4 offset-md-4">
-                    <div class="form-container p-3" style="border: 2px solid #1abc9c;border-radius:10px;">
-                    <h2 class="text-center">Profile</h2>
-                    <form action="update_delete.php" method="post">
-                        <div class="form-group">
-                            <label for="id">Id</label>
-                            <input type="text" class="form-control" name="id" value='.$row['id'].' readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control" name="name" value="'.$row['name'].'">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" value='.$row['email'].'>
-                        </div>
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" name="username" value="'.$row['username'].'">
-                        </div>';
-                        if(count($row)==6)
-                        {
-                            echo '<div class="form-group">
-                                <label for="bloodgroup">Blood Group</label>
-                                <input type="text" class="form-control" name="blood" value='.$row['blood'].' readonly>
+                <div class="col-md-6 offset-md-3">
+                    <div class="form-container p-3" style="border: 2px solid #1abc9c; border-radius: 10px;">
+                        <h2 class="text-center">Profile</h2>
+                        <form action="update_delete.php" method="post">
+
+                            <div class="form-group row">
+                                <label for="id" class="col-sm-3 col-form-label">Id</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="id" value='.$row['id'].' readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="role" class="col-sm-3 col-form-label">Role</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="role" value='.$role.' readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="name" class="col-sm-3 col-form-label">Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="name" value="'.$row['name'].'">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="email" class="col-sm-3 col-form-label">Email</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" name="email" value='.$row['email'].'>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="username" class="col-sm-3 col-form-label">Username</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="username" value="'.$row['username'].'">
+                                </div>
                             </div>';
-                        }
-                        echo '<div class="text-center"> <!-- Center the buttons -->
-                            <button type="submit"  name="update" class="btn" style="color:#fff;background-color:#107dac;">Update</button>
-                            <button type="submit" name="delete" class="btn" style="color:#fff;background-color:#a91b0d;">Delete</button>
-                        </div>
-                    </form>
+
+                            if (count($row) == 6) {
+                                echo '<div class="form-group row">
+                                        <label for="bloodgroup" class="col-sm-3 col-form-label">Blood Group</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" name="blood" value='.$row['blood'].' readonly>
+                                        </div>
+                                    </div>';
+                            }
+
+                            echo '<div class="text-center">
+                                <!-- Center the buttons -->
+                                <button type="submit" name="update" class="btn" style="color:#fff;background-color:#107dac;">Update</button>
+                                <button type="submit" name="delete" class="btn" style="color:#fff;background-color:#a91b0d;">Delete</button>
+                            </div>
+
+                        </form>
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
         ';
     }
 

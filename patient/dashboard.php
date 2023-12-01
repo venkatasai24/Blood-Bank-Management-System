@@ -204,7 +204,7 @@
 
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            profile_template($row);
+            profile_template($row,"Patient");
 
         }
         else if ($getOne && $getOne==='request_blood')
