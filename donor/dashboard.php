@@ -76,7 +76,7 @@
             padding: 0;
         }
 
-        .navbar-nav .nav-item a , .dropdown button {
+        .navbar-nav .nav-item a , .dropdown a {
             position: relative;
             color: #777;
             text-transform: uppercase;
@@ -89,7 +89,7 @@
             background-color: #f8f88f; /* Change the color to match your navbar background */
         }
 
-        .navbar-nav  li a:hover , .dropdown button:hover {
+        .navbar-nav  li a:hover , .dropdown a:hover {
             color: #1abc9c !important;
         }
     </style>
@@ -113,9 +113,9 @@
                     echo 
                     '
                     <div class="dropdown">
-                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left:0px;">
+                        <a class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left:0px;">
                             '.$_SESSION['donor'].'
-                        </button>
+                        </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li>
                                 <a class="dropdown-item" href="?profile=1">Profile</a>
@@ -242,7 +242,7 @@
 
             $donor_id = $result["id"];
             
-            $query = "SELECT * from donate where donor_id=:id;";
+            $query = "SELECT * from donate where donor_id=:id order by id desc;;";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(":id",$donor_id);
             $stmt->execute();

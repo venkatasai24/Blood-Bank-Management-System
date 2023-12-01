@@ -489,7 +489,7 @@
             }
 
             $status = "pending";
-            $query = "SELECT * from request where status=:status;";
+            $query = "SELECT * from request where status=:status order by id desc;";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(":status",$status);
             $stmt->execute();
@@ -509,7 +509,7 @@
             echo '</div>
             </div>';
 
-            if($cnt==0) print_error("No requests made!");
+            if($cnt==0) print_error("No requests made currently!");
 
             // Close the PDO connection
             $pdo = null;
@@ -527,7 +527,7 @@
             }
 
             $status = "pending";
-            $query = "SELECT * from donate where status=:status;";
+            $query = "SELECT * from donate where status=:status order by id desc;";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(":status",$status);
             $stmt->execute();
@@ -548,7 +548,7 @@
             echo '</div>
             </div>';
 
-            if($cnt==0) print_error("No donations made!");
+            if($cnt==0) print_error("No donations made currently!");
 
             // Close the PDO connection
             $pdo = null;
@@ -565,7 +565,7 @@
             }
 
             $status = "pending";
-            $query = "SELECT * from request where status!=:status;";
+            $query = "SELECT * from request where status!=:status order by id desc;";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(":status",$status);
             $stmt->execute();
@@ -603,7 +603,7 @@
             }
 
             $status = "pending";
-            $query = "SELECT * from donate where status!=:status;";
+            $query = "SELECT * from donate where status!=:status order by id desc;";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(":status",$status);
             $stmt->execute();

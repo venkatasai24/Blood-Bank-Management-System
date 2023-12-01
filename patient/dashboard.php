@@ -243,7 +243,7 @@
 
             $patient_id = $result["id"];
 
-            $query = "SELECT * from request where patient_id=:id;";
+            $query = "SELECT * from request where patient_id=:id order by id desc;";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(":id",$patient_id);
             $stmt->execute();

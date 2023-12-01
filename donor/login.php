@@ -50,7 +50,7 @@
         .form-container {
             border-radius: 10px;
             padding: 20px;
-            margin: 10px auto;
+            margin: 10px auto 50px;
             max-width: 400px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
