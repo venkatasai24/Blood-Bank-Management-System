@@ -46,31 +46,54 @@
             margin: 0;
             padding: 0;
         }
-
-        body {
-            background: linear-gradient(45deg, #b6ffb6, #66b2ff);
-        }
         .form-container {
-            background-color: white;
             border-radius: 10px;
             padding: 20px;
-            margin: 50px auto;
+            margin: 10px auto 50px;
             max-width: 400px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .navbar-shading {
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Add a subtle box shadow for a lighting effect */
+        .active , .active:hover {
+            background-color: #1abc9c; /* Highlight color for the active button */
+            color:#fff;
+        }
+        .btn {
+            border: 1px #1ac9bc solid;
+            margin: 5px;
+        }
+        .custom-text-center {
+            padding: 10px;
+            max-width: 400px;
+            margin: auto;
+        }
+        @media (min-width: 576px) {
+            .text-center {
+                display: flex;
+                justify-content: center;
+            }
+            .btn {
+                flex: 1;
+            }
         }
     </style>
 </head>
-<body>
-    <div class="container" style="margin-top:50px;">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shading" style="background-color:#b6ffb6;">
-        <a class="navbar-brand" href="../index.php" style="color: #fff;font-size:22px;text-shadow: 2px 2px 2px #66b2ff;letter-spacing:1px;font-weight:bold;">BBMS</a>
+<body style="background-color: #f5f5dc;">
+    <div class="container" style="margin-top:80px;">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#f8f88f;">
+        <a class="navbar-brand" href="../index.php" style="color: #777;font-size:22px;letter-spacing:2px;">BBMS</a>
     </nav>
         <?php 
             check_errors();
-            login_template("Patient Login");
         ?>
+        <div class="text-center custom-text-center">
+            <a class="btn active" href="../patient/login.php">As Patient</a>
+            <a class="btn" href="../donor/login.php">As Donor</a>
+            <a class="btn" href="../admin/login.php">As Admin</a>
+        </div>
+        <!-- Patient Register Form -->
+        <div style="display:block;">
+            <?php login_template("Patient Login"); ?>
+        </div>
     </div>
     <!-- Include Bootstrap JS and jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

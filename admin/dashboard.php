@@ -57,32 +57,21 @@
             padding: 0;
         }
 
-        body {
-            background: linear-gradient(45deg, #b6ffb6, #66b2ff);
-        }
-        .navbar-nav .nav-item a {
+        .navbar-nav .nav-item a , .dropdown a {
             position: relative;
-            color: #333333;
+            color: #777;
+            text-transform: uppercase;
+            margin-right: 10px;
             text-decoration: none;
             overflow: hidden;
         }
 
-        /* Create a pseudo-element for the border effect */
-        .navbar-nav .nav-item a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background-color: #66b2ff;
-            transform: translateX(-50%); /* Center the pseudo-element */
-            transition: width 0.3s; /* Smooth transition effect for width */
+        .navbar-nav  li a:hover {
+            color: #1abc9c !important;
         }
 
-        /* On hover, extend the width to both sides */
-        .navbar-nav .nav-item a:hover::before {
-            width: 100%;
+        .dropdown-menu , .dropdown-menu a:hover {
+            background-color: #f8f88f; /* Change the color to match your navbar background */
         }
         #animated-image {
         height:25px;
@@ -98,56 +87,58 @@
             transform: scale(1.25); /* End with 125% scaling */
         }
     }
-        @media (max-width: 991px) {
-            .navbar-nav.ml-auto {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-grow: 1;
-            }
-        }
-
-        .navbar-shading {
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Add a subtle box shadow for a lighting effect */
-        }
     </style>
 </head>
-<body>
+<body style="background-color: #f5f5dc;">
     <!-- Bootstrap navigation bar with responsive button -->
     <div class="container" style="margin-bottom: 100px;">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shading" style="background-color:#b6ffb6;">
-    <a class="navbar-brand" href="../index.php" style="color: #fff;font-size:22px;text-shadow: 2px 2px 2px #66b2ff;letter-spacing:1px;font-weight:bold;">BBMS</a>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#f8f88f;">
+    <a class="navbar-brand" href="../index.php" style="color: #777;font-size:22px;letter-spacing:2px;">BBMS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="?stock=1" style="color:#333333; margin: 0 10px;">Stock</a>
+                    <a class="nav-link" href="?stock=1">Stock</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="?profile=1" style="color:#333333; margin: 0 10px;">Profile</a>
+                    <a class="nav-link" href="?donors=1">Donors</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="?donors=1" style="color: #333333; margin: 0 10px;">Donors</a>
+                    <a class="nav-link" href="?patients=1">Patients</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="?patients=1" style="color:#333333; margin: 0 10px;">Patients</a>
+                    <a class="nav-link" href="?donations=1">Donations</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="?donations=1" style="color:#333333; margin: 0 10px;">Donations</a>
+                    <a class="nav-link" href="?requests=1">Requests</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="?requests=1" style="color:#333333; margin: 0 10px;">Requests</a>
+                    <a class="nav-link" href="?donations_history=1">Donations History</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="?donations_history=1" style="color:#333333; margin: 0 10px;">Donations History</a>
+                    <a class="nav-link" href="?requests_history=1">Requests History</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="?requests_history=1" style="color:#333333; margin: 0 10px;">Requests History</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="?logout=1" style="color:#333333;margin: 0 10px;">Logout</a>
+                <li>
+                    <?php
+                    echo 
+                    '
+                    <div class="dropdown">
+                        <a class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left:0px;">
+                            '.$_SESSION['admin'].'
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <a class="dropdown-item" href="?profile=1">Profile</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="?logout=1">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                    ';
+                    ?>
                 </li>
             </ul>
         </div>
@@ -211,9 +202,8 @@
             <style>
             .transparent-bg {
                 transition: background 0.3s, transform 0.3s;
-                border: 1px solid #fff;
                 border-radius:16px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                color:#fff;
             }
             
             .transparent-bg:hover {
@@ -221,8 +211,8 @@
             }                       
             </style>
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> 
-                <div class="card" style="background:transparent;border:none;border-radius:16px;">
-                    <div class="card-body transparent-bg">
+                <div class="card transparent-bg" style="background:#1abc9c;border:none;border-radius:16px;">
+                    <div class="card-body">
             ';
             echo '<b><p class="card-title">' . $row['username'] . '</p></b>';
             echo '<p class="card-text">Id : ' . $row['id'] . '</p>';
@@ -246,9 +236,8 @@
             <style>
             .transparent-bg {
                 transition: background 0.3s, transform 0.3s;
-                border: 1px solid #fff;
                 border-radius:16px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                color:#fff;
             }
             
             .transparent-bg:hover {
@@ -256,8 +245,8 @@
             }                       
             </style>
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> 
-                <div class="card" style="background:transparent;border:none;border-radius:16px;">
-                    <div class="card-body transparent-bg">
+                <div class="card transparent-bg" style="background:#1abc9c;border:none;border-radius:16px;">
+                    <div class="card-body">
                         <b><p class="card-title">' . $row['username'] . '</p></b>
                         <p class="card-text">'.$name1.' : ' . $row[$name2] . '</p>
                         <p class="card-text">Blood Group : ' . $row['blood'] . '</p>
@@ -280,9 +269,8 @@
             <style>
             .transparent-bg {
                 transition: background 0.3s, transform 0.3s;
-                border: 1px solid #fff;
                 border-radius:16px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                color:#fff;
             }
             
             .transparent-bg:hover {
@@ -290,8 +278,8 @@
             }                       
             </style>
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> 
-                <div class="card" style="background:transparent;border:none;border-radius:16px;">
-                    <div class="card-body transparent-bg">
+                <div class="card transparent-bg" style="background:#1abc9c;border:none;border-radius:16px;">
+                    <div class="card-body">
                         <b><p class="card-title">Id : ' . $row[$name1] . '</p></b>
                         <p class="card-text">'.$name2.' : ' . $row[$name3] . '</p>
                         <p class="card-text">Blood Group : ' . $row['blood'] . '</p>
@@ -335,7 +323,7 @@
             
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            profile_template($row);
+            profile_template($row,'Admin');
 
         }
         else if ($getOne && $getOne==='stock')
@@ -408,7 +396,7 @@
                                     <input type="number" name="unit" class="form-control mt-2" placeholder="Quantity">
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn" name="button" style="color:#fff;background-color:#0047ab;">Update</button>
                                 </div>
                             </form>
                             </div>
@@ -501,7 +489,7 @@
             }
 
             $status = "pending";
-            $query = "SELECT * from request where status=:status;";
+            $query = "SELECT * from request where status=:status order by id desc;";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(":status",$status);
             $stmt->execute();
@@ -521,7 +509,7 @@
             echo '</div>
             </div>';
 
-            if($cnt==0) print_error("No requests made!");
+            if($cnt==0) print_error("No requests made currently!");
 
             // Close the PDO connection
             $pdo = null;
@@ -539,7 +527,7 @@
             }
 
             $status = "pending";
-            $query = "SELECT * from donate where status=:status;";
+            $query = "SELECT * from donate where status=:status order by id desc;";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(":status",$status);
             $stmt->execute();
@@ -560,7 +548,7 @@
             echo '</div>
             </div>';
 
-            if($cnt==0) print_error("No donations made!");
+            if($cnt==0) print_error("No donations made currently!");
 
             // Close the PDO connection
             $pdo = null;
@@ -577,7 +565,7 @@
             }
 
             $status = "pending";
-            $query = "SELECT * from request where status!=:status;";
+            $query = "SELECT * from request where status!=:status order by id desc;";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(":status",$status);
             $stmt->execute();
@@ -615,7 +603,7 @@
             }
 
             $status = "pending";
-            $query = "SELECT * from donate where status!=:status;";
+            $query = "SELECT * from donate where status!=:status order by id desc;";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(":status",$status);
             $stmt->execute();

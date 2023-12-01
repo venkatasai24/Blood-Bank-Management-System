@@ -44,28 +44,10 @@
                 top: -30px;
                 left: 0;
             }
-            button {
-                position: relative;
-                display: inline-block;
-                padding: 10px 20px;
-                font-weight: bold;
-                color: #fff;
-                font-size: 16px;
-                text-decoration: none;
-                text-transform: uppercase !important;
-                overflow: hidden;
-                transition: background 0.3s, color 0.3s, border-radius 0.3s;
-                letter-spacing: 1px;
-                background: linear-gradient(45deg, #b6ffb6, #66b2ff); /* Button background color */
-                border: none; /* Button border color */
-            }
-            button:hover {
-                border-radius: 25px; /* Button border-radius on hover */
-            }
         </style>
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <div class="form-container">
+                <div class="form-container" style="border: 2px solid #1abc9c;border-radius:10px;">
                     <div class="d-flex justify-content-between">
                         <h2 class="text-center">' . $name . '</h2>
                     </div>
@@ -83,7 +65,7 @@
                             </div>
                         </div>';
                         echo
-                        '<button type="submit">Login</button>
+                        '<button class="btn" type="submit" style="color:#fff;background-color:#0047ab;border:none;">Login</button>
                     </form>';
                     if($name !== 'Admin Login' ) echo '<p class="mt-3">Dont have an account? <a href="register.php">Register here</a></p>';
                 echo '</div>
@@ -137,28 +119,10 @@
                 top: -30px;
                 left: 0;
             }
-            button {
-                position: relative;
-                display: inline-block;
-                padding: 10px 20px;
-                font-weight: bold;
-                color: #fff;
-                font-size: 16px;
-                text-decoration: none;
-                text-transform: uppercase !important;
-                overflow: hidden;
-                transition: background 0.3s, color 0.3s, border-radius 0.3s;
-                letter-spacing: 1px;
-                background: linear-gradient(45deg, #b6ffb6, #66b2ff); /* Button background color */
-                border: none; /* Button border color */
-            }
-            button:hover {
-                border-radius: 25px; /* Button border-radius on hover */
-            }
         </style>
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <div class="form-container">
+                <div class="form-container" style="border: 2px solid #1abc9c;border-radius:10px;">
                     <div class="d-flex justify-content-between">
                         <h2 class="text-center">' . $name . '</h2>
                     </div>
@@ -209,7 +173,7 @@
 
                         echo
                         '<!-- Add more registration fields as needed -->
-                        <button type="submit">Register</button>
+                        <button class="btn" type="submit" style="color:#fff;background-color:#0047ab;border:none;">Register</button>
                     </form>';
                     if($name !== 'Admin Register' ) echo '<p class="mt-3">Already have an account? <a href="login.php">Login here</a></p>';
                 echo '</div>
@@ -217,48 +181,72 @@
         </div>
         ';
     }
-    function profile_template(array $row)
+    function profile_template(array $row,string $role)
     {
         echo
         '
-        <div class="container">
+        <div class="container mb-5">
             <div class="row">
-                <div class="col-md-4 offset-md-4">
-                    <div class="form-container p-3" style="border: 2px solid #b6ffb6;border-radius:10px;">
-                    <h2 class="text-center">Profile</h2>
-                    <form action="update_delete.php" method="post">
-                        <div class="form-group">
-                            <label for="id">Id</label>
-                            <input type="text" class="form-control" name="id" value='.$row['id'].' readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control" name="name" value="'.$row['name'].'">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" value='.$row['email'].'>
-                        </div>
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" name="username" value="'.$row['username'].'">
-                        </div>';
-                        if(count($row)==6)
-                        {
-                            echo '<div class="form-group">
-                                <label for="bloodgroup">Blood Group</label>
-                                <input type="text" class="form-control" name="blood" value='.$row['blood'].' readonly>
+                <div class="col-md-6 offset-md-3">
+                    <div class="form-container p-3" style="border: 2px solid #1abc9c; border-radius: 10px;">
+                        <h2 class="text-center">Profile</h2>
+                        <form action="update_delete.php" method="post">
+
+                            <div class="form-group row">
+                                <label for="id" class="col-sm-3 col-form-label">Id</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="id" value='.$row['id'].' readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="role" class="col-sm-3 col-form-label">Role</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="role" value='.$role.' readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="name" class="col-sm-3 col-form-label">Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="name" value="'.$row['name'].'">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="email" class="col-sm-3 col-form-label">Email</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" name="email" value='.$row['email'].'>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="username" class="col-sm-3 col-form-label">Username</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="username" value="'.$row['username'].'">
+                                </div>
                             </div>';
-                        }
-                        echo '<div class="text-center"> <!-- Center the buttons -->
-                            <button type="submit"  name="update" class="btn btn-primary">Update</button>
-                            <button type="submit" name="delete" class="btn btn-danger">Delete</button>
-                        </div>
-                    </form>
+
+                            if (count($row) == 6) {
+                                echo '<div class="form-group row">
+                                        <label for="bloodgroup" class="col-sm-3 col-form-label">Blood Group</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" name="blood" value='.$row['blood'].' readonly>
+                                        </div>
+                                    </div>';
+                            }
+
+                            echo '<div class="text-center">
+                                <!-- Center the buttons -->
+                                <button type="submit" name="update" class="btn" style="color:#fff;background-color:#107dac;">Update</button>
+                                <button type="submit" name="delete" class="btn" style="color:#fff;background-color:#a91b0d;">Delete</button>
+                            </div>
+
+                        </form>
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
         ';
     }
 
@@ -269,19 +257,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 offset-md-4">
-                    <div class="form-container p-3" style="border: 2px solid #b6ffb6;border-radius:10px;">
+                    <div class="form-container p-3" style="border: 2px solid #1abc9c;border-radius:10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
                     <h2 class="text-center">'.$name.'</h2>
                     <form action='.$path.' method="post">
                         <div class="form-group">
-                            <label for='.$name2.'>'.$name1.':</label>
+                            <label for='.$name2.'>'.$name1.'</label>
                             <input type="text" id='.$name2.' name='.$name2.' class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="units">Units:</label>
+                            <label for="units">Units</label>
                             <input type="number" id="units" name="unit" class="form-control">
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">'.$name3.'</button>
+                            <button type="submit" class="btn" style="color:#fff;background-color:#0047ab;">'.$name3.'</button>
                         </div>
                     </form>
                     </div>
@@ -296,10 +284,10 @@
         '
         <style>
         .transparent-bg {
-            background: #b6ffb6;
+            background: #1abc9c;
             transition: background 0.3s, transform 0.3s;
-            border: 1px solid #66b2ff;
             border-radius:16px;
+            color:#fff;
         }
         
         .transparent-bg:hover {
@@ -307,7 +295,7 @@
         }                       
         </style>
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> 
-            <div class="card" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);border: 1px solid #66b2ff;border-radius:16px;">
+            <div class="card" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);border-radius:16px;">
                 <div class="card-body transparent-bg">
                     <p class="card-text">'.$name1.' : ' . $row[$name2] . '</p>
                     <p class="card-text">Units : ' . $row['unit'] . '</p>
@@ -327,12 +315,17 @@
                 .transparent-bg {
                     background: transparent;
                     transition: background 0.3s, transform 0.3s;
-                    border: 2px solid #b6ffb6;
+                    border: 2px solid #1abc9c;
                     border-radius: 16px;
                 }
 
                 .transparent-bg:hover {
                     transform: translateY(-5px);
+                }
+
+                .card-body a , .card-body a:hover {
+                    color:#fff;
+                    background-color:#0047ab;
                 }
             </style>
             <div class="container mt-5">
@@ -346,18 +339,9 @@
                             <div class="col-md-12 mb-3">
                                 <div class="card" style="border: none; border-radius: 16px; background: transparent;">
                                     <div class="card-body transparent-bg">
-                                        <h5 class="card-title">Profile</h5>
-                                        <p class="card-text">View and update your profile details.</p>
-                                        <a href="?profile=1" class="btn btn-primary">Go to Profile</a>
-                                    </div>
-                                </div>
-                                </div>
-                            <div class="col-md-12 mb-3">
-                                <div class="card" style="border: none; border-radius: 16px; background: transparent;">
-                                    <div class="card-body transparent-bg">
                                         <h5 class="card-title">' . $name[1] . ' Blood</h5>
                                         <p class="card-text">' . $name[2] . '</p>
-                                        <a href="?' . $name[3] . '_blood=1" class="btn btn-primary btn-action">' . $name[1] . ' Blood</a>
+                                        <a href="?' . $name[3] . '_blood=1" class="btn">' . $name[1] . ' Blood</a>
                                     </div>
                                 </div>
                             </div>
@@ -366,7 +350,7 @@
                                     <div class="card-body transparent-bg">
                                         <h5 class="card-title">' . $name[4] . ' History</h5>
                                         <p class="card-text">' . $name[5] . '</p>
-                                        <a href="?' . $name[6] . '_history=1" class="btn btn-primary btn-action">' . $name[4] . ' History</a>
+                                        <a href="?' . $name[6] . '_history=1" class="btn">' . $name[4] . ' History</a>
                                     </div>
                                 </div>
                             </div>
